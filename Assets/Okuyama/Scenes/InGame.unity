@@ -871,7 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb5af46b71b6cd4faa0ceb645e0c18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveDatas:
+  waveObjects:
   - waveObject: {fileID: 1701908170}
     endTimeSec: 10
   - waveObject: {fileID: 26804843}

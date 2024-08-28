@@ -1,0 +1,7 @@
+namespace Waves{
+    class WaveManager
+    abstract class BaseWave
+
+    class SimpleWave
+    SimpleWave --|> BaseWave
+}

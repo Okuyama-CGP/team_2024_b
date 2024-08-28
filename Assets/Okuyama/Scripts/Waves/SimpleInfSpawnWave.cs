@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleInfSpawn : MonoBehaviour, IWave
+public class SimpleInfSpawnWave : BaseWave
 {
     [SerializeField] float spawnInterval = 1.0f;
     [SerializeField] GameObject enemyPrefab;
@@ -10,13 +10,13 @@ public class SimpleInfSpawn : MonoBehaviour, IWave
     float elapsedTime = 0;
     GameObject Player;
 
-    public void OnStartWave()
+    public override void OnStartWave()
     {
         Debug.Log(name + " Start");
         Player = GameObject.Find("Player");
     }
 
-    public void OnWaveUpdate()
+    public override void OnWaveUpdate()
     {
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= spawnInterval) //Intervalごとに敵を生成
@@ -33,7 +33,7 @@ public class SimpleInfSpawn : MonoBehaviour, IWave
         }
     }
 
-    public void OnEndWave()
+    public override void OnEndWave()
     {
         Debug.Log(name + "End");
     }
