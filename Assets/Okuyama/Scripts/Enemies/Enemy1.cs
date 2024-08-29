@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1 : EnemyBase
+public class Enemy1 : BaseEnemy
 {
     GameObject Player;
     [SerializeField] float speed = 1.0f;
