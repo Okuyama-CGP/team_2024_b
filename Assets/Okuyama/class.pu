@@ -1,7 +1,34 @@
-namespace Waves{
-    class WaveManager
-    abstract class BaseWave
+namespace Managers{
+    abstract class BaseWave<<MonoBehaviour>>{
+        + abstract void StartWave()
+        + abstract void UpdateWave()
+        + abstract void EndWave()
+    }
+    
+    class ConcreteWaveBehaviors{
+        無限湧きウェーブ,
+        特殊ウェーブ,
+        ボスウェーブ, etc...
+    }
+    ConcreteWaveBehaviors --d|> BaseWave
 
-    class SimpleWave
-    SimpleWave --|> BaseWave
+    class WaveManager<<MonoBehaviour>>
+    WaveManager --u> BaseWave
 }
+
+namespace Player{
+
+}
+
+namespace Weapons{
+
+}
+
+namespace Enemies{
+    abstract class BaseEnemy
+
+    Enemy1 --d|> BaseEnemy
+    Enemy2 --d|> BaseEnemy
+
+}
+
