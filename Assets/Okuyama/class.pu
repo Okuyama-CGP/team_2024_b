@@ -1,0 +1,115 @@
+namespace Managers{
+    class GameManager<<MonoBehaviour>>{
+        インゲーム全体の管理
+    }
+    GameManager --> WaveManager
+
+    class WaveManager<<MonoBehaviour>>{
+        ウェーブ、敵の湧きを管理
+    }
+    WaveManager --r> BaseWave
+
+    abstract class BaseWave<<MonoBehaviour>>{
+        + abstract void StartWave()
+        + abstract void UpdateWave()
+        + abstract void EndWave()
+    }
+    
+    class ConcreteWaveBehaviors{
+        無限湧きウェーブ,
+        特殊ウェーブ,
+        ボスウェーブ, etc...
+    }
+    ConcreteWaveBehaviors --d|> BaseWave
+
+}
+
+namespace Player{
+    class PlayerCore<<MonoBehaviour>>{
+        状態異常、ステータスなど
+        出来ればObserverパターンで実装したい。
+    }
+
+    class WeaponUser<<MonoBehaviour>>{
+        攻撃関連の処理
+        + 所持している武器の情報
+        + 描画用の武器オブジェクト
+    }
+    WeaponUser --> PlayerCore : 振れる状態か?
+
+
+    class MoveController<<MonoBehaviour>>{
+        移動関連の処理
+        回避行動とか作るならここ
+    }
+    MoveController --> PlayerCore : 動ける? ステータスは?
+    MoveController --> WeaponUser : 動ける? 速度減衰?
+
+    
+    PlayerEffectEmmiter --> PlayerCore : 監視
+    PlayerAnimator --> PlayerCore : 監視
+
+
+}
+
+namespace Weapon{
+    interface IWeapon{
+        + void Attack()
+    }
+    WeaponUser --> IWeapon
+
+    abstract BaseWeapon<<MonoBehaviour>>
+    BaseWeapon ..|> IWeapon
+
+    class ConcreteWeapon
+    ConcreteWeapon --|> BaseWeapon
+
+}
+
+namespace Bullet{
+    abstract BaseBullet<<MonoBehaviour>>{
+        攻撃の実体、当たり判定
+    }
+    BaseBullet ..> IDamageableFromPlayer : ApplyDamage
+    BaseBullet <-- BaseWeapon : Prefab生成
+
+    class ConcreteBullet{
+        武器ごとに。
+    }
+    ConcreteBullet --|> BaseBullet
+
+    interface IDamageableFromPlayer{
+        + void ApplyDamage(Damage)
+    }
+
+
+    struct Damage{
+        + bool canDamagePlayer
+        + bool canDamageEnemy
+        + int damage
+        + float knockback
+        + float stun
+        etc...
+    }
+    IDamageableFromPlayer --l> Damage
+    PlayerCore ..|> IDamageableFromPlayer
+}
+
+
+namespace Enemies{
+    abstract class BaseEnemy<<MonoBehaviour>>
+    BaseEnemy ..|> IDamageableFromPlayer
+    BaseEnemy <.. BaseWave : Prefab生成
+    BaseEnemy --> BaseBullet : 遠距離攻撃生成
+
+    ConcreteEnemy --d|> BaseEnemy
+
+}
+
+/'namespace MapObject{
+    abstract BaseBreakableObj<<MonoBehaviour>>{
+        破壊可能オブジェクトの類
+    }
+    BaseBreakableObj ..|> IDamageableFromPlayer
+}'/
+

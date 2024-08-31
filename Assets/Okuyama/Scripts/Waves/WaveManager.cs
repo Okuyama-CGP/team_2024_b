@@ -7,28 +7,32 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [System.Serializable]
-    public struct WaveData
+    public struct WaveObject
     {
-        public IWave iwaveaa;
         public GameObject waveObject;
         public float endTimeSec;
     }
 
-    [SerializeField] List<WaveData> waveDatas = new List<WaveData>();   //各waveScript,終了時刻
+    [SerializeField] List<WaveObject> waveObjects = new List<WaveObject>();   
+    //各waveScript,終了時刻
 
     int CurrentWaveIndex = 0; //現在のwaveのインデックス
 
     float ElapsedTime = 0; //ゲーム開始からの経過時間
     float CurrentWaveEndTime = 0; //現在のwaveの終了時刻
-    IWave CurrentIWave;
+    BaseWave CurrentWaveScript;
 
     bool isEnd = false;
 
     void Start()
     {
-        CurrentIWave = waveDatas[0].waveObject.GetComponent<IWave>();
-        CurrentIWave.OnStartWave(); //第一ウェーブ開始処理
-        CurrentWaveEndTime = waveDatas[0].endTimeSec;
+        CurrentWaveScript = waveObjects[0].waveObject.GetComponent<BaseWave>();
+        if(CurrentWaveScript == null){
+            Debug.LogError("WaveObjectにBaseWaveを継承したスクリプトがアタッチされていません");
+        }else{
+            CurrentWaveScript.OnStartWave(); //第一ウェーブ開始処理
+            CurrentWaveEndTime = waveObjects[0].endTimeSec;
+        }
     }
 
     void Update()
@@ -37,13 +41,13 @@ public class WaveManager : MonoBehaviour
 
         if (ElapsedTime >= CurrentWaveEndTime) //ウェーブ終了時刻到達時、次のウェーブへ
         {
-            CurrentIWave.OnEndWave(); //現在のウェーブの終了時処理
+            CurrentWaveScript.OnEndWave(); //現在のウェーブの終了時処理
             CurrentWaveIndex++;
 
-            if (CurrentWaveIndex < waveDatas.Count){
-                CurrentIWave = waveDatas[CurrentWaveIndex].waveObject.GetComponent<IWave>();
-                CurrentIWave.OnStartWave(); //次のウェーブの開始処理
-                CurrentWaveEndTime = waveDatas[CurrentWaveIndex].endTimeSec;
+            if (CurrentWaveIndex < waveObjects.Count){
+                CurrentWaveScript = waveObjects[CurrentWaveIndex].waveObject.GetComponent<BaseWave>();
+                CurrentWaveScript.OnStartWave(); //次のウェーブの開始処理
+                CurrentWaveEndTime = waveObjects[CurrentWaveIndex].endTimeSec;
             }else{
                 CurrentWaveEndTime = float.PositiveInfinity;
 
@@ -56,7 +60,7 @@ public class WaveManager : MonoBehaviour
         else
         {
             if (!isEnd){
-                CurrentIWave.OnWaveUpdate(); //ウェーブ実行中の処理
+                CurrentWaveScript.OnWaveUpdate(); //ウェーブ実行中の処理
             }
         }
     }
