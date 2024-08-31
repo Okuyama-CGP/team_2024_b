@@ -38,12 +38,12 @@ namespace Player{
     WeaponUser --> PlayerCore : 振れる状態か?
 
 
-    class MoveController<<MonoBehaviour>>{
+    class PlayerMoveController<<MonoBehaviour>>{
         移動関連の処理
         回避行動とか作るならここ
     }
-    MoveController --> PlayerCore : 動ける? ステータスは?
-    MoveController --> WeaponUser : 動ける? 速度減衰?
+    PlayerMoveController --> PlayerCore : 動ける? ステータスは?
+    PlayerMoveController --> WeaponUser : 動ける? 速度減衰?
 
     
     PlayerEffectEmmiter --> PlayerCore : 監視
@@ -52,14 +52,14 @@ namespace Player{
 
 }
 
-namespace Weapon{
-    interface IWeapon{
-        + void Attack()
+namespace Weapon/Item{
+    interface IUseable{
+        + void Use()
     }
-    WeaponUser --> IWeapon
+    WeaponUser --> IUseable
 
     abstract BaseWeapon<<MonoBehaviour>>
-    BaseWeapon ..|> IWeapon
+    BaseWeapon ..|> IUseable
 
     class ConcreteWeapon
     ConcreteWeapon --|> BaseWeapon
