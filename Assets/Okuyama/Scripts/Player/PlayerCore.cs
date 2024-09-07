@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerCore : MonoBehaviour
 {
+    [SerializeField] CursolObject cursolObject;
+
     /// <summary>
     /// プレイヤーのモデルオブジェクト inspectorで設定
     /// </summary>
@@ -23,6 +25,19 @@ public class PlayerCore : MonoBehaviour
     /// 攻撃開始フレームのみtrue
     /// </summary>
     public bool attackTrigger;
+
+    /// <summary>
+    /// カーソルのワールド座標
+    /// </summary>
+    public Vector3 cursolPosition { get { return cursolObject.cursolPosition; } }
+    /// <summary>
+    /// カーソルのプレイヤーからの相対位置(方向)
+    /// </summary>
+    public Vector3 cursolVector { get { return cursolPosition - model.transform.position; } }
+    /// <summary>
+    /// カーソルのプレイヤーからの距離
+    /// </summary>
+    public Vector3 cursolDirection { get { return cursolVector.normalized; } }
 
 
     void Start()
