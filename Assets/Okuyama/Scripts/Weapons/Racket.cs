@@ -13,5 +13,7 @@ public class Racket : BaseWeapon
         Transform playerModelTF = usePlayer.model.transform;
         Vector3 spawnPos = playerModelTF.position + playerModelTF.forward * range;
         Instantiate(bulletPrefab, spawnPos, playerModelTF.rotation);
+
+        //TODO:カーソル方向にする？
     }
 }

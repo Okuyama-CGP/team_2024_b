@@ -94,7 +94,7 @@ namespace Bullet{
     struct Damage{
         + bool canDamagePlayer
         + bool canDamageEnemy
-        + int damage
+        + float damage
         + float knockback
         + float stun
         etc...
