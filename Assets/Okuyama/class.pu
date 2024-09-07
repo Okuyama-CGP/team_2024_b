@@ -27,6 +27,7 @@ namespace Managers{
 namespace Player{
     class PlayerCore<<MonoBehaviour>>{
         状態異常、ステータスなど
+        プレイヤーに関する情報だいたい持つ。
         出来ればObserverパターンで実装したい。
     }
 
@@ -44,6 +45,13 @@ namespace Player{
     }
     PlayerMoveController --> PlayerCore : 動ける? ステータスは?
     PlayerMoveController --> WeaponUser : 動ける? 速度減衰?
+
+    class CursolObject<<MonoBehaviour>>{
+        マウスカーソルのワールド座標のオブジェクト
+        + カーソルの位置
+    }
+
+    PlayerCore --> CursolObject : 位置取得、方向,距離の計算
 
     
     PlayerEffectEmmiter --> PlayerCore : 監視
@@ -86,7 +94,7 @@ namespace Bullet{
     struct Damage{
         + bool canDamagePlayer
         + bool canDamageEnemy
-        + int damage
+        + float damage
         + float knockback
         + float stun
         etc...

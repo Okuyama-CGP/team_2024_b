@@ -36,6 +36,5 @@ public class PlayerMoveController : MonoBehaviour
             
         }
 
-        //TODO:ジャンプ機能 要検討
     }
 }
