@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 3931911829889258519}
   - component: {fileID: 1638184246517681809}
   - component: {fileID: 2220022132012762238}
-  - component: {fileID: 3550432439521150635}
+  - component: {fileID: -6931164211947807996}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -181,7 +181,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!135 &3550432439521150635
+--- !u!135 &-6931164211947807996
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,7 +196,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
