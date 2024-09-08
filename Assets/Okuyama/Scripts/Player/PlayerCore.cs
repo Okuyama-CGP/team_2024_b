@@ -6,7 +6,7 @@ using UnityEngine;
 /// Playerの現在の状態とかを管理する。
 /// Observerパターンにしたかったけど統一性を考慮して妥協
 /// </summary>
-public class PlayerCore : MonoBehaviour
+public class PlayerCore : MonoBehaviour, IDamageable
 {
     [SerializeField] CursolObject cursolObject;
 
@@ -39,14 +39,44 @@ public class PlayerCore : MonoBehaviour
     /// </summary>
     public Vector3 cursolDirection { get { return cursolVector.normalized; } }
 
+    /// <summary>
+    /// 最大HP
+    /// </summary>
+    public float MaxHP = 100;
+
+    /// <summary>
+    /// 現在のHP
+    /// </summary>
+    public float HP { get; private set; }
+
 
     void Start()
     {
-        
+        HP = MaxHP;
     }
 
     void Update()
     {
-        
+        Debug.Log(HP);
     }
+
+    /// <summary>
+    /// ダメージを受ける処理
+    /// </summary>
+    public void ApplyDamage(Damage damage)
+    {
+        if(damage.canDamagePlayer){
+            HP -= damage.damage;
+            if(HP <= 0){
+                Die();
+            }
+        }
+    }
+
+    public void Die()
+    {
+        //TODO:死亡時(ゲームオーバー)処理
+        Debug.Log("プレイヤー死亡！！");
+    }
+
 }

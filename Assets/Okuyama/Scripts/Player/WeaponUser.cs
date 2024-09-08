@@ -28,5 +28,6 @@ public class WeaponUser : MonoBehaviour
             bool isUsed = holdingUseable.TryUse(playerCore);
             playerCore.attackTrigger = isUsed;
         }
+        //TODO: 長押し使用どうしよう
     }
 }
