@@ -49,15 +49,30 @@ public class PlayerCore : MonoBehaviour, IDamageable
     /// </summary>
     public float HP { get; private set; }
 
+    /// <summary>
+    /// 現在の経験値
+    /// </summary>
+    public float EXP { get; private set; }
+
 
     void Start()
     {
         HP = MaxHP;
+        EXP = 0;
     }
 
     void Update()
     {
-        Debug.Log(HP);
+        
+    }
+
+    //接触系
+    void OnTriggerEnter(Collider other)
+    {
+        //アイテム拾った
+        if(other.gameObject.TryGetComponent(out BaseItem item)){
+            item.PickUp();
+        }
     }
 
     /// <summary>
@@ -79,4 +94,13 @@ public class PlayerCore : MonoBehaviour, IDamageable
         Debug.Log("プレイヤー死亡！！");
     }
 
+    /// <summary>
+    /// 経験値を加算する
+    /// </summary>
+    public void AddEXP(float expAmount)
+    {
+        EXP += expAmount;
+        Debug.Log("EXP: " + EXP);
+        //TODO:レベルアップ処理
+    }
 }

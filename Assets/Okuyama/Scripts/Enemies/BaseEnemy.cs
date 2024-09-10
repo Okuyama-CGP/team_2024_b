@@ -13,6 +13,9 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     [SerializeField] protected float maxHP = 5.0f;
     protected float currentHP;
 
+    [SerializeField, Tooltip("BaseItemを乗せたPrefab 落とさないならnullでもOK")] 
+    protected GameObject dropItem; //落とさないならnullでもいい
+
     public GameObject Player{get; set;}   //召喚時にsetする
     public PlayerCore playerCore{get; set;} //
 
@@ -49,8 +52,17 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     //死ぬ
     public void Die()
     {
+        //アイテムドロップ
+        if (dropItem != null){
+            GameObject item = Instantiate(dropItem, transform.position, Quaternion.identity);
+            BaseItem baseItem = item.GetComponent<BaseItem>();
+            baseItem.Player = Player;
+            baseItem.playerCore = playerCore;
+        }
+
+        //TODO:死亡演出
+
         Destroy(gameObject);
-        //TODO:死亡演出、ドロップアイテムなど
     }
 
 }
