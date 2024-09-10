@@ -7,6 +7,7 @@ public class UImanager : MonoBehaviour
 {
     [SerializeField] PlayerCore playerCore;
     [SerializeField] TextMeshProUGUI hpText;
+    [SerializeField] TextMeshProUGUI expText;
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +20,8 @@ public class UImanager : MonoBehaviour
     {
         //HP表示(仮)
         hpText.text = "HP: " + (int)playerCore.HP + " / " + playerCore.MaxHP;
+
+        //EXP表示(仮)
+        expText.text = "EXP: " + (int)playerCore.EXP;
     }
 }

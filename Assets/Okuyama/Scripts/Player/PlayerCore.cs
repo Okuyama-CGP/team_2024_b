@@ -54,6 +54,11 @@ public class PlayerCore : MonoBehaviour, IDamageable
     /// </summary>
     public float EXP { get; private set; }
 
+    /// <summary>
+    /// アイテム吸引距離
+    /// </summary>
+    public float suckDistance { get; private set; } = 2.0f;
+
 
     void Start()
     {
@@ -100,7 +105,6 @@ public class PlayerCore : MonoBehaviour, IDamageable
     public void AddEXP(float expAmount)
     {
         EXP += expAmount;
-        Debug.Log("EXP: " + EXP);
         //TODO:レベルアップ処理
     }
 }
