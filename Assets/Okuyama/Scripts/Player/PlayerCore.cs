@@ -50,9 +50,19 @@ public class PlayerCore : MonoBehaviour, IDamageable
     public float HP { get; private set; }
 
     /// <summary>
+    /// 現在のレベル
+    /// </summary>
+    public int Level { get; private set; } = 1;
+
+    /// <summary>
     /// 現在の経験値
     /// </summary>
     public float EXP { get; private set; }
+
+    /// <summary>
+    /// 次のレベルアップに必要な経験値
+    /// </summary>
+    public float NextLevelEXP { get; private set; } = 10;
 
     /// <summary>
     /// アイテム吸引距離
@@ -105,6 +115,17 @@ public class PlayerCore : MonoBehaviour, IDamageable
     public void AddEXP(float expAmount)
     {
         EXP += expAmount;
-        //TODO:レベルアップ処理
+        if(EXP >= NextLevelEXP){
+            EXP -= NextLevelEXP;
+            Level++;
+            //TODO 必要経験値のカーブ考えよう
+            LevelUp();
+        }
+    }
+
+    public void LevelUp()
+    {
+        Debug.Log("レベルアップ！！ 現在のレベル: " + Level);
+        //TODO:レベルアップ時の処理
     }
 }

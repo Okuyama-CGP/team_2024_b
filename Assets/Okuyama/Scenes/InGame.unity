@@ -1866,8 +1866,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+    rgba: 4278976256
+  m_fontColor: {r: 0, g: 1, b: 0.041554213, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2052,7 +2052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCore: {fileID: 200610463}
   hpText: {fileID: 1440818602}
-  expText: {fileID: 0}
+  expText: {fileID: 2009582921}
 --- !u!1 &2111162520
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,6 @@ public class UImanager : MonoBehaviour
         hpText.text = "HP: " + (int)playerCore.HP + " / " + playerCore.MaxHP;
 
         //EXP表示(仮)
-        expText.text = "EXP: " + (int)playerCore.EXP;
+        expText.text = "Level: " + playerCore.Level + "  EXP: " + (int)playerCore.EXP;
     }
 }
