@@ -9,11 +9,13 @@ public class SimpleInfSpawnWave : BaseWave
 
     float elapsedTime = 0;
     GameObject Player;
+    PlayerCore playerCore;
 
     public override void OnStartWave()
     {
         Debug.Log(name + " Start");
         Player = GameObject.Find("Player");
+        playerCore = Player.GetComponent<PlayerCore>();
     }
 
     public override void OnWaveUpdate()
@@ -28,7 +30,9 @@ public class SimpleInfSpawnWave : BaseWave
 
             Vector3 spawnPos = new Vector3(Mathf.Cos(deg), 0, Mathf.Sin(deg)) * dist;   //極座標変換
             spawnPos += Player.transform.position;
-            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            enemy.GetComponent<BaseEnemy>().Player = Player;
+            enemy.GetComponent<BaseEnemy>().playerCore = playerCore;
             elapsedTime -= spawnInterval;
         }
     }

@@ -6,15 +6,11 @@ public class Enemy1 : BaseEnemy
 {
     [SerializeField] float speed = 1.0f;
 
-    GameObject Player;
-    PlayerCore playerCore;
     Rigidbody rb;
 
     protected override void Start()
     {
         base.Start();
-        Player = GameObject.Find("Player");
-        playerCore = Player.GetComponent<PlayerCore>();
         rb = GetComponent<Rigidbody>();
     }
 

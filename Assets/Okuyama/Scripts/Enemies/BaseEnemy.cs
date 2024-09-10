@@ -13,6 +13,9 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     [SerializeField] protected float maxHP = 5.0f;
     protected float currentHP;
 
+    public GameObject Player{get; set;}   //召喚時にsetする
+    public PlayerCore playerCore{get; set;} //
+
 
     [SerializeField] TextMeshPro hpTMP; //TODO 仮置き
 
@@ -20,7 +23,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     {
         currentHP = maxHP;
 
-        hpTMP.text = currentHP.ToString(); //TODO 仮置き
+        hpTMP.text = currentHP.ToString(); //仮置き
     }
 
     protected virtual void Update()
@@ -35,7 +38,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
         if (damage.canDamageEnemy){
             currentHP -= damage.damage;
 
-            hpTMP.text = currentHP.ToString(); //TODO 仮置き
+            hpTMP.text = currentHP.ToString(); //仮置き
 
             if (currentHP <= 0){
                 Die();
