@@ -14,7 +14,7 @@ public class WeaponUser : MonoBehaviour
 
     void Start()
     {
-        playerCore = GetComponent<PlayerCore>();
+        playerCore = MainGameManager.instance.playerCore;
 
         weaponInstance = Instantiate(weaponPrefab, weaponHolder.transform);
         holdingUseable = weaponInstance.GetComponent<IUseable>();
@@ -28,5 +28,6 @@ public class WeaponUser : MonoBehaviour
             bool isUsed = holdingUseable.TryUse(playerCore);
             playerCore.attackTrigger = isUsed;
         }
+        //TODO: 長押し使用どうしよう
     }
 }

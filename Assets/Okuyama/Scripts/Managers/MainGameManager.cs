@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class MainGameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// PlayerCoreスクリプト Playerの状態などを管理している。
+    /// </summary>
+    [SerializeField]public PlayerCore playerCore;
+
+    //シングルトンパターン
+    public static MainGameManager instance;
+    private void Awake()
     {
-        
+        if (instance == null){
+            instance = this;
+            //DontDestroyOnLoad(gameObject); シーン跨ぎ。要検討
+        }else{
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
         
     }
