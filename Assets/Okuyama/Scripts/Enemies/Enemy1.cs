@@ -6,22 +6,18 @@ public class Enemy1 : BaseEnemy
 {
     [SerializeField] float speed = 1.0f;
 
-    GameObject Player;
-    PlayerCore playerCore;
     Rigidbody rb;
 
     protected override void Start()
     {
         base.Start();
-        Player = GameObject.Find("Player");
-        playerCore = Player.GetComponent<PlayerCore>();
         rb = GetComponent<Rigidbody>();
     }
 
     protected override void Update()
     {
         base.Update();
-        Vector3 direction = (Player.transform.position - transform.position).normalized;
+        Vector3 direction = (playerCore.position - transform.position).normalized;
         rb.velocity = direction * speed;
     }
 
@@ -37,7 +33,7 @@ public class Enemy1 : BaseEnemy
     void OnCollisionStay(Collision collision)
     {
         //単一対象ならGameobject照合が負荷的にいいらしい。
-        if(collision.gameObject == Player){
+        if(collision.gameObject == playerCore.gameObject){
             playerCore.ApplyDamage(contactDamage);
         }
     }

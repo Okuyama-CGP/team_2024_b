@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// 敵の基底クラス。<br>
@@ -12,14 +13,24 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     [SerializeField] protected float maxHP = 5.0f;
     protected float currentHP;
 
+    [SerializeField, Tooltip("BaseItemを乗せたPrefab 落とさないならnullでもOK")] 
+    protected GameObject dropItem; //死亡時にドロップするアイテム　経験値などのPrefab
+
+    protected PlayerCore playerCore{get{return MainGameManager.instance.playerCore;}}
+
+
+    [SerializeField] TextMeshPro hpTMP; //TODO 仮置き
+
     protected virtual void Start()
     {
         currentHP = maxHP;
+
+        hpTMP.text = currentHP.ToString(); //仮置き
     }
 
     protected virtual void Update()
     {
-
+        
     }
 
     //ダメージを受ける処理
@@ -28,6 +39,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
         //canDamageEnemyなダメージソースからのダメージのみ受ける
         if (damage.canDamageEnemy){
             currentHP -= damage.damage;
+
+            hpTMP.text = currentHP.ToString(); //仮置き
 
             if (currentHP <= 0){
                 Die();
@@ -38,8 +51,15 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     //死ぬ
     public void Die()
     {
+        //アイテムドロップ
+        if (dropItem != null){
+            GameObject item = Instantiate(dropItem, transform.position, Quaternion.identity);
+            BaseItem baseItem = item.GetComponent<BaseItem>();
+        }
+
+        //TODO:死亡演出
+
         Destroy(gameObject);
-        //TODO:死亡演出、ドロップアイテムなど
     }
 
 }

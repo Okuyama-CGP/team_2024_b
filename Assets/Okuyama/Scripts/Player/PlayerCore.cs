@@ -16,6 +16,16 @@ public class PlayerCore : MonoBehaviour, IDamageable
     public GameObject model;
 
     /// <summary>
+    /// プレイヤーのGameObject
+    /// </summary>
+    public GameObject playerObject { get { return gameObject; } }
+
+    /// <summary>
+    /// プレイヤーのTransform.position
+    /// </summary>
+    public Vector3 position { get { return transform.position; } }
+
+    /// <summary>
     /// プレイヤーが移動中(移動入力がある)かどうか
     /// </summary>
     public bool isMoving;
@@ -49,15 +59,45 @@ public class PlayerCore : MonoBehaviour, IDamageable
     /// </summary>
     public float HP { get; private set; }
 
+    /// <summary>
+    /// 現在のレベル
+    /// </summary>
+    public int Level { get; private set; } = 1;
+
+    /// <summary>
+    /// 現在の経験値
+    /// </summary>
+    public float EXP { get; private set; }
+
+    /// <summary>
+    /// 次のレベルアップに必要な経験値
+    /// </summary>
+    public float NextLevelEXP { get; private set; } = 10;
+
+    /// <summary>
+    /// アイテム吸引距離
+    /// </summary>
+    public float suckDistance { get; private set; } = 2.0f;
+
 
     void Start()
     {
         HP = MaxHP;
+        EXP = 0;
     }
 
     void Update()
     {
-        Debug.Log(HP);
+        
+    }
+
+    //接触系
+    void OnTriggerEnter(Collider other)
+    {
+        //アイテム拾った
+        if(other.gameObject.TryGetComponent(out BaseItem item)){
+            item.PickUp();
+        }
     }
 
     /// <summary>
@@ -79,4 +119,23 @@ public class PlayerCore : MonoBehaviour, IDamageable
         Debug.Log("プレイヤー死亡！！");
     }
 
+    /// <summary>
+    /// 経験値を加算する
+    /// </summary>
+    public void AddEXP(float expAmount)
+    {
+        EXP += expAmount;
+        if(EXP >= NextLevelEXP){
+            EXP -= NextLevelEXP;
+            Level++;
+            //TODO 必要経験値のカーブ考えよう
+            LevelUp();
+        }
+    }
+
+    public void LevelUp()
+    {
+        Debug.Log("レベルアップ！！ 現在のレベル: " + Level);
+        //TODO:レベルアップ時の処理
+    }
 }
