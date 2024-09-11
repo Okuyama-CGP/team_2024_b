@@ -14,10 +14,9 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     protected float currentHP;
 
     [SerializeField, Tooltip("BaseItemを乗せたPrefab 落とさないならnullでもOK")] 
-    protected GameObject dropItem; //落とさないならnullでもいい
+    protected GameObject dropItem; //死亡時にドロップするアイテム　経験値などのPrefab
 
-    public GameObject Player{get; set;}   //召喚時にsetする
-    public PlayerCore playerCore{get; set;} //
+    protected PlayerCore playerCore{get{return MainGameManager.instance.playerCore;}}
 
 
     [SerializeField] TextMeshPro hpTMP; //TODO 仮置き
@@ -56,8 +55,6 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
         if (dropItem != null){
             GameObject item = Instantiate(dropItem, transform.position, Quaternion.identity);
             BaseItem baseItem = item.GetComponent<BaseItem>();
-            baseItem.Player = Player;
-            baseItem.playerCore = playerCore;
         }
 
         //TODO:死亡演出

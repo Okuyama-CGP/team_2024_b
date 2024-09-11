@@ -17,7 +17,7 @@ public class Enemy1 : BaseEnemy
     protected override void Update()
     {
         base.Update();
-        Vector3 direction = (Player.transform.position - transform.position).normalized;
+        Vector3 direction = (playerCore.position - transform.position).normalized;
         rb.velocity = direction * speed;
     }
 
@@ -33,7 +33,7 @@ public class Enemy1 : BaseEnemy
     void OnCollisionStay(Collision collision)
     {
         //単一対象ならGameobject照合が負荷的にいいらしい。
-        if(collision.gameObject == Player){
+        if(collision.gameObject == playerCore.gameObject){
             playerCore.ApplyDamage(contactDamage);
         }
     }

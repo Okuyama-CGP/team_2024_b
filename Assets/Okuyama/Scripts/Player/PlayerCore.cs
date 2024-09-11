@@ -16,6 +16,16 @@ public class PlayerCore : MonoBehaviour, IDamageable
     public GameObject model;
 
     /// <summary>
+    /// プレイヤーのGameObject
+    /// </summary>
+    public GameObject playerObject { get { return gameObject; } }
+
+    /// <summary>
+    /// プレイヤーのTransform.position
+    /// </summary>
+    public Vector3 position { get { return transform.position; } }
+
+    /// <summary>
     /// プレイヤーが移動中(移動入力がある)かどうか
     /// </summary>
     public bool isMoving;

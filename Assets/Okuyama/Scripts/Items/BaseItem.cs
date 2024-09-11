@@ -11,14 +11,13 @@ public abstract class BaseItem : MonoBehaviour
     [SerializeField] protected bool isSuckable = false; //吸引されるか
     static float suckSpeed = 5.0f; //吸引速度
 
-    public GameObject Player{get; set;}
-    public PlayerCore playerCore{get; set;}
+    protected PlayerCore playerCore{get{return MainGameManager.instance.playerCore;}}
 
     void Update()
     {
         //吸引される処理
         if (isSuckable){
-            Vector3 direction = Player.transform.position - transform.position;
+            Vector3 direction = playerCore.position - transform.position;
             if (direction.magnitude <= playerCore.suckDistance){
                 transform.position += direction.normalized * Time.deltaTime * suckSpeed;
             }

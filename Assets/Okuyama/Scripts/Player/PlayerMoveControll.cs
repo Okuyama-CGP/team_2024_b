@@ -16,7 +16,7 @@ public class PlayerMoveController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerCore = GetComponent<PlayerCore>();
+        playerCore = MainGameManager.instance.playerCore;
         rb = GetComponent<Rigidbody>();
     }
 

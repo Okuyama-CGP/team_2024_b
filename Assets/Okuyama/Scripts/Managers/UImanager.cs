@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class UImanager : MonoBehaviour
 {
-    [SerializeField] PlayerCore playerCore;
     [SerializeField] TextMeshProUGUI hpText;
     [SerializeField] TextMeshProUGUI expText;
+
+    PlayerCore playerCore;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerCore = MainGameManager.instance.playerCore;
     }
 
     // Update is called once per frame

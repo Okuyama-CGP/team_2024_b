@@ -14,7 +14,7 @@ public class WeaponUser : MonoBehaviour
 
     void Start()
     {
-        playerCore = GetComponent<PlayerCore>();
+        playerCore = MainGameManager.instance.playerCore;
 
         weaponInstance = Instantiate(weaponPrefab, weaponHolder.transform);
         holdingUseable = weaponInstance.GetComponent<IUseable>();
