@@ -10,14 +10,14 @@ public class UpgradeOnhitTest : BaseUpgrade
         Debug.Log("OnHit追加");
     }
 
-    public override void OnRemoved(PlayerCore player)
+    public override void OnStacked(PlayerCore player)
     {
-        player.OnHitEvent -= OnHitEffect;
-        Debug.Log("OnHit削除");
+        Debug.Log("OnHitスタック : " + stackCount);
     }
 
+    //OnHit処理の内容
     public void OnHitEffect(IDamageable target, Damage damage)
     {
-        Debug.Log("OnHit : " + damage.damageValue);
+        Debug.Log("OnHit : " + stackCount);
     }
 }

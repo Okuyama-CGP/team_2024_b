@@ -21,16 +21,18 @@ public class UpgradeManager : MonoBehaviour
     /// </summary>
     public void AddUpgrade(BaseUpgrade upgrade)
     {
-        upgradesList.Add(upgrade);
-        upgrade.OnAdded(playerCore);
-    }
+        //TODO upgradeIDとかで判断したい
+        BaseUpgrade sameUpgrade = upgradesList.Find(u => u.GetType() == upgrade.GetType());
+        if(sameUpgrade != null){
+            //既に所持：スタック
+            sameUpgrade.stackCount++;
+            sameUpgrade.OnStacked(playerCore);
+        }else{
+            //未所持：追加
+            upgradesList.Add(upgrade);
+            upgrade.OnAdded(playerCore);
+        }
 
-    /// <summary>
-    /// アップグレードを削除する
-    /// </summary>
-    public void RemoveUpgrade(BaseUpgrade upgrade)
-    {
-        upgradesList.Remove(upgrade);
-        upgrade.OnRemoved(playerCore);
+        //TODO maxStack制限
     }
 }

@@ -1,9 +1,9 @@
 
 public abstract class BaseUpgrade
 {
-    public int StackCount { get; protected set; } = 1;
+    public int stackCount { get; set; } = 1;
 
-    public int MaxStack = 10;
+    public int maxStack { get; protected set; } = 10;
 
     /// <summary>
     /// アップグレードが追加されたときの処理
@@ -12,7 +12,7 @@ public abstract class BaseUpgrade
     public abstract void OnAdded(PlayerCore player);
 
     /// <summary>
-    /// アップグレードが削除されたときの処理
+    /// アップグレードがスタックされたときの処理
     /// </summary>
-    public abstract void OnRemoved(PlayerCore player);
+    public abstract void OnStacked(PlayerCore player);
 }

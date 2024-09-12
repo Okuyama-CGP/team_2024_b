@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class UpgradeHealth : BaseUpgrade
 {
+    const float healthBonus = 10f;
+    const float healthBonusPerStack = 5f;
+
     public override void OnAdded(PlayerCore player)
     {
-        Debug.Log("最大ヘルス増加");//TODO ヘルス増加処理
+        player.IncreaseMaxHP(healthBonus);
     }
 
-    public override void OnRemoved(PlayerCore player)
+    public override void OnStacked(PlayerCore player)
     {
-        Debug.Log("最大ヘルス減少");
+        player.IncreaseMaxHP(healthBonusPerStack);
     }
 }
 

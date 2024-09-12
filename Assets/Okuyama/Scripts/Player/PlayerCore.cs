@@ -57,7 +57,7 @@ public class PlayerCore : MonoBehaviour, IDamageable
     /// <summary>
     /// 最大HP
     /// </summary>
-    public float MaxHP = 100;
+    public float MaxHP{ get; private set; } = 100;
 
     /// <summary>
     /// 現在のHP
@@ -105,7 +105,7 @@ public class PlayerCore : MonoBehaviour, IDamageable
     }
 
 
-    
+
     void Update()
     {
         //TODO デバッグ用
@@ -132,7 +132,7 @@ public class PlayerCore : MonoBehaviour, IDamageable
     public bool ApplyDamage(Damage damage)
     {
         if(damage.canDamagePlayer){
-            HP -= damage.damageValue;
+            HP -= damage.damageValue; //TODO HP更新をイベント化
             if(HP <= 0){
                 Die();
             }
@@ -141,8 +141,7 @@ public class PlayerCore : MonoBehaviour, IDamageable
             return false;
         }
     }
-
-    public void Die()
+    void Die()
     {
         //TODO:死亡時(ゲームオーバー)処理
         Debug.Log("プレイヤー死亡！！");
@@ -161,10 +160,18 @@ public class PlayerCore : MonoBehaviour, IDamageable
             LevelUp();
         }
     }
-
-    public void LevelUp()
+    void LevelUp()
     {
         Debug.Log("レベルアップ！！ 現在のレベル: " + Level);
         //TODO:レベルアップ時の処理
+    }
+
+    /// <summary>
+    /// 最大HPを増やす
+    /// </summary>
+    public void IncreaseMaxHP(float amount)
+    {
+        MaxHP += amount;
+        HP += amount;
     }
 }
