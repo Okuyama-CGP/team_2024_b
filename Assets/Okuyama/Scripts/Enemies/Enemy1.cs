@@ -26,7 +26,7 @@ public class Enemy1 : BaseEnemy
     Damage contactDamage = new Damage{
         canDamagePlayer = true,
         canDamageEnemy = false,
-        damage = 0.1f,
+        damageValue = 0.1f,
         direction = Vector3.zero,
         knockback = 0f
     };

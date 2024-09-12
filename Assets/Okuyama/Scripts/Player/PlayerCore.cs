@@ -26,6 +26,11 @@ public class PlayerCore : MonoBehaviour, IDamageable
     public Vector3 position { get { return transform.position; } }
 
     /// <summary>
+    /// プレイヤーのupgradeManagerクラス
+    /// </summary>
+    public UpgradeManager upgradeManager;
+
+    /// <summary>
     /// プレイヤーが移動中(移動入力がある)かどうか
     /// </summary>
     public bool isMoving;
@@ -75,20 +80,41 @@ public class PlayerCore : MonoBehaviour, IDamageable
     public float NextLevelEXP { get; private set; } = 10;
 
     /// <summary>
+    /// 攻撃力
+    /// </summary>
+    public float AttackPower { get; private set; } = 1;
+
+    /// <summary>
     /// アイテム吸引距離
     /// </summary>
     public float suckDistance { get; private set; } = 2.0f;
 
 
+    public delegate void OnHitDelegate(IDamageable target, Damage damage);  //イベントの型定義
+    /// <summary>
+    /// プレイヤーが敵に攻撃したときのイベント<br/>
+    /// 武器などで攻撃した際は、<c>OnHitEvent?.Invoke(target, damage)</c>を呼び出す
+    /// </summary>
+    public OnHitDelegate OnHitEvent;
+
     void Start()
     {
+        upgradeManager = GetComponent<UpgradeManager>();
         HP = MaxHP;
         EXP = 0;
     }
 
+
+    
     void Update()
     {
-        
+        //TODO デバッグ用
+        if(Input.GetKeyDown(KeyCode.I)){
+            upgradeManager.AddUpgrade(new UpgradeHealth());
+        }
+        if(Input.GetKeyDown(KeyCode.O)){
+            upgradeManager.AddUpgrade(new UpgradeOnhitTest());
+        }
     }
 
     //接触系
@@ -103,13 +129,16 @@ public class PlayerCore : MonoBehaviour, IDamageable
     /// <summary>
     /// ダメージを受ける処理
     /// </summary>
-    public void ApplyDamage(Damage damage)
+    public bool ApplyDamage(Damage damage)
     {
         if(damage.canDamagePlayer){
-            HP -= damage.damage;
+            HP -= damage.damageValue;
             if(HP <= 0){
                 Die();
             }
+            return true;
+        }else{
+            return false;
         }
     }
 
