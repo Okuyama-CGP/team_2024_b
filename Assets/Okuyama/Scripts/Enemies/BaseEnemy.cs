@@ -11,7 +11,11 @@ using TMPro;
 public abstract class BaseEnemy : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float maxHP = 5.0f;
-    protected float currentHP;
+
+    /// <summary>
+    /// 現在のHP
+    /// </summary>
+    public float currentHP{get; protected set;}
 
     [SerializeField, Tooltip("BaseItemを乗せたPrefab 落とさないならnullでもOK")] 
     protected GameObject dropItem; //死亡時にドロップするアイテム　経験値などのPrefab
@@ -34,17 +38,20 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     }
 
     //ダメージを受ける処理
-    public void ApplyDamage(Damage damage)
+    public bool ApplyDamage(Damage damage)
     {
         //canDamageEnemyなダメージソースからのダメージのみ受ける
         if (damage.canDamageEnemy){
-            currentHP -= damage.damage;
+            currentHP -= damage.damageValue;
 
             hpTMP.text = currentHP.ToString(); //仮置き
 
             if (currentHP <= 0){
                 Die();
             }
+            return true;
+        }else{
+            return false;
         }
     }
 
