@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "UpgradeHealth", menuName = "Upgrades/UpgradeHealth")]
 public class UpgradeHealth : BaseUpgrade
 {
     const float healthBonus = 10f;

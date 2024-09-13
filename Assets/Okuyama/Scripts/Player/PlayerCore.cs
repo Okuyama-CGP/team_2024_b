@@ -108,13 +108,7 @@ public class PlayerCore : MonoBehaviour, IDamageable
 
     void Update()
     {
-        //TODO デバッグ用
-        if(Input.GetKeyDown(KeyCode.I)){
-            upgradeManager.AddUpgrade(new UpgradeHealth());
-        }
-        if(Input.GetKeyDown(KeyCode.O)){
-            upgradeManager.AddUpgrade(new UpgradeOnhitTest());
-        }
+
     }
 
     //接触系

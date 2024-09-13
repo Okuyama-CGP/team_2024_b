@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "UpgradeOnhitTest", menuName = "Upgrades/UpgradeOnhitTest")]
 public class UpgradeOnhitTest : BaseUpgrade
 {
     public override void OnAdded(PlayerCore player)

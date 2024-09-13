@@ -23,7 +23,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     protected PlayerCore playerCore{get{return MainGameManager.instance.playerCore;}}
 
 
-    [SerializeField] TextMeshPro hpTMP; //TODO 仮置き
+    [SerializeField] TextMeshPro hpTMP; //FIXME 仮置き
 
     protected virtual void Start()
     {

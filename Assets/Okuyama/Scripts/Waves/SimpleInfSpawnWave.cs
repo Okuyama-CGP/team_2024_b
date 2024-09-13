@@ -22,7 +22,7 @@ public class SimpleInfSpawnWave : BaseWave
         if (elapsedTime >= spawnInterval) //Intervalごとに敵を生成
         {
             //距離20の円周上にランダムに敵を生成
-            //TODO:マップ外スポーン対策
+            //FIXME マップ外スポーン対策
             float dist = 20;
             float deg = UnityEngine.Random.Range(0, Mathf.PI * 2);
 

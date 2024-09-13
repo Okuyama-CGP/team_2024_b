@@ -29,6 +29,6 @@ public class CursolObject : MonoBehaviour
         float distance = (y - ray.origin.y) / ray.direction.y; //指定Y平面までの距離
         transform.position =  ray.origin + ray.direction * distance;
         
-        //TODO:通常のマウスカーソル消してもいいかもね
+        //TODO 通常のマウスカーソル消してもいいかもね
     }
 }
