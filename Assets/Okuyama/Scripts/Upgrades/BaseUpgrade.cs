@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class BaseUpgrade : ScriptableObject
 {
+    [Header("---------- Base ----------")]
     public string upgradeName = "NoName";
     [TextArea(3, 10)]
     public string description = "Upgradeの説明テキストテキストテキストテキスト";

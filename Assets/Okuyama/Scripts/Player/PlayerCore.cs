@@ -90,7 +90,7 @@ public class PlayerCore : MonoBehaviour, IDamageable
     public float suckDistance { get; private set; } = 2.0f;
 
 
-    public delegate void OnHitDelegate(IDamageable target, Damage damage);  //イベントの型定義
+    public delegate void OnHitDelegate(GameObject target, Damage damage);  //イベントの型定義
     /// <summary>
     /// プレイヤーが敵に攻撃したときのイベント<br/>
     /// 武器などで攻撃した際は、<c>OnHitEvent?.Invoke(target, damage)</c>を呼び出す
