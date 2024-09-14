@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8205864881088583888}
   - component: {fileID: 8746474850081962068}
   - component: {fileID: 8478214800065136845}
-  - component: {fileID: 1983484198956190754}
   - component: {fileID: -8259774805037904486}
   - component: {fileID: 3648391011648137100}
   - component: {fileID: 4562367799327715153}
@@ -87,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1983484198956190754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5073282467425953455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1192922b2efd3440b807b7cd0ceb19a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 0.2
 --- !u!114 &-8259774805037904486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,11 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e210565c1cce3d4a8221241dda75ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canDamagePlayer: 0
-  canDamageEnemy: 1
-  damageAmount: 5
-  knockbackDirection: {x: 0, y: 0, z: 0}
-  knockbackAmount: 0
 --- !u!135 &4562367799327715153
 SphereCollider:
   m_ObjectHideFlags: 0

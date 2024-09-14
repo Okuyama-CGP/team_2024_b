@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 200610463}
   - component: {fileID: 200610459}
   - component: {fileID: 200610464}
+  - component: {fileID: 200610466}
   - component: {fileID: 200610465}
   m_Layer: 0
   m_Name: Player
@@ -284,6 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursolObject: {fileID: 1001174055}
   model: {fileID: 1517701745}
+  upgradeManager: {fileID: 200610466}
   isMoving: 0
   attackTrigger: 0
   MaxHP: 100
@@ -316,6 +318,18 @@ MonoBehaviour:
   text: Player
   fontSize: 6
   height: 3
+--- !u!114 &200610466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200610458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9813192efe2e2a459294c228d4309f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &440931284
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,9 +4,13 @@ using UnityEngine;
 /// ダメージを受けることができる、という性質。
 /// ダメージソースなどは、struct Damageの中身を見て判断。
 /// </summary>
-interface IDamageable
+public interface IDamageable
 {
-    void ApplyDamage(Damage damage);
+    /// <summary>
+    /// ダメージを受ける処理 <br/>
+    /// 成功ならtrueを返せ。
+    /// </summary>
+    bool ApplyDamage(Damage damage);
 }
 
 public struct Damage
@@ -14,7 +18,7 @@ public struct Damage
     public bool canDamagePlayer;
     public bool canDamageEnemy;
 
-    public float damage;
+    public float damageValue;
     public Vector3 direction;
     public float knockback;
 }
