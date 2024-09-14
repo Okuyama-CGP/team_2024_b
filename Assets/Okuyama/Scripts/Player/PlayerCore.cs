@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -165,5 +166,12 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public void IncreaseAttackPower(float amount) {
         AttackPower += amount;
+    }
+
+    /// <summary>
+    /// アイテム吸引距離を増やす
+    /// </summary>
+    public void IncreaseSuckDistance(float amount) {
+        suckDistance += amount;
     }
 }

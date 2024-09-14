@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067c879f5b3d864da280dc707f3524a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
+  maxHP: 20
   dropItem: {fileID: 7747549702550959381, guid: 155b60a46d23d354a8c2dac93acd3573, type: 3}
   hpTMP: {fileID: 8030692208528994367}
   speed: 2

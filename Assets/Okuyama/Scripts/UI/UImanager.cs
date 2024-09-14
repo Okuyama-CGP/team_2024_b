@@ -7,6 +7,7 @@ public class UImanager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI hpText;
     [SerializeField] TextMeshProUGUI expText;
+    [SerializeField] TextMeshProUGUI upgradesText;
 
     /// <summary>
     /// レベルアップ時のupgrade選択用UI
@@ -20,6 +21,8 @@ public class UImanager : MonoBehaviour
     {
         playerCore = MainGameManager.instance.playerCore;
         levelUpUI.gameObject.SetActive(false);
+
+        playerCore.upgradeManager.OnUpgradesChanged += UpdateUpgradesText;
     }
 
     // Update is called once per frame
@@ -53,5 +56,14 @@ public class UImanager : MonoBehaviour
         levelUpUI.gameObject.SetActive(false);
         playerCore.upgradeManager.AddUpgrade(upgrade);
         Time.timeScale = 1;
+    }
+
+
+    public void UpdateUpgradesText(List<BaseUpgrade> upgrades){
+        string text = "";
+        foreach (var upgrade in upgrades){
+            text += upgrade.upgradeName + "   ×" + upgrade.stackCount + "\n";
+        }
+        upgradesText.text = text;
     }
 }

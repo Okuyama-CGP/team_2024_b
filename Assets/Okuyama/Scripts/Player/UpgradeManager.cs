@@ -34,6 +34,12 @@ public class UpgradeManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 所持中のアップグレードが更新されたイベント<br/>
+    /// 引数：所持中BaseUpgradeのリスト
+    /// </summary>
+    public event Action<List<BaseUpgrade>> OnUpgradesChanged;
+
 
     //privateプロパティ
     PlayerCore playerCore;
@@ -45,13 +51,7 @@ public class UpgradeManager : MonoBehaviour {
     }
 
     void Update() {
-        //TODO デバッグ用
-        if (Input.GetKeyDown(KeyCode.I)) {
-            AddUpgrade(allUpgrades[0]);
-        }
-        if (Input.GetKeyDown(KeyCode.O)) {
-            AddUpgrade(allUpgrades[1]);
-        }
+        Debug.Log(allUpgrades[1].upgradeName + " : " + allUpgrades[1].stackCount);
     }
 
     /// <summary>
@@ -76,6 +76,9 @@ public class UpgradeManager : MonoBehaviour {
             upgrade.OnAdded(playerCore);
 
         }
+
+        //upgrade更新イベント発火
+        OnUpgradesChanged?.Invoke(upgradesList);
     }
 
     public void LevelUp() {

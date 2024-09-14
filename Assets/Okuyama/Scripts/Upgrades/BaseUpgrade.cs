@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public abstract class BaseUpgrade : ScriptableObject {
@@ -12,7 +13,11 @@ public abstract class BaseUpgrade : ScriptableObject {
     [Tooltip("upgradeの出現頻度。ノーマル(HP増加など)で1.0。レアなほど小さく。")]
     public float appearanceRate = 1.0f;
 
-    public int stackCount { get; set; } = 0;
+    /// <summary>
+    /// 取得してスタックされた数
+    /// </summary>
+    [NonSerialized] public int stackCount = 0;
+
     /// <summary>
     /// まだ獲得可能であるか(スタック数が上限に達していないか)
     /// </summary>
