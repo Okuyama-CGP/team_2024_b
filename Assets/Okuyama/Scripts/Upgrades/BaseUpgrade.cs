@@ -1,9 +1,18 @@
 
-public abstract class BaseUpgrade
-{
-    public int stackCount { get; set; } = 1;
+using UnityEngine;
 
-    public int maxStack { get; protected set; } = 10;
+public abstract class BaseUpgrade : ScriptableObject {
+    
+    [Header("---------- BaseUpgradeInfo ----------")]
+    public string upgradeName = "NoName";
+    [TextArea(3, 10)]
+    public string description = "Upgradeの説明テキストテキストテキストテキスト";
+    public Sprite icon;
+    public int maxStack = 99;
+    [Tooltip("アプグレ出現率の重み。ノーマル(HP増加など)で1.0。レアなほど小さく。")]
+    public float appearanceRate = 1.0f;
+
+    public int stackCount { get; set; } = 1;
 
     /// <summary>
     /// アップグレードが追加されたときの処理

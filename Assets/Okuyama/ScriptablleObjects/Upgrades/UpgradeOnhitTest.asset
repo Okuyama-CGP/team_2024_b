@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191475d79757ecc4cb1fa87d66f44e65, type: 3}
+  m_Name: UpgradeOnhitTest
+  m_EditorClassIdentifier: 
+  upgradeName: "\u8FFD\u6483(\u4EEE)"
+  description: "\u653B\u6483Hit\u6642\u306B\u3001\u8FFD\u52A0\u52B9\u679C\u3092\u4E0E\u3048\u305F\u6C17\u5206\u306B\u306A\u308B\u3002\n\u5B9F\u88C5\u30C6\u30B9\u30C8\u306A\u306E\u3067\u3001\u30D1\u30FC\u30C6\u30A3\u30AF\u30EB\u30A8\u30D5\u30A7\u30AF\u30C8\u3092\u767A\u751F\u3055\u305B\u308B\u3060\u3051\u3002"
+  icon: {fileID: 0}
+  maxStack: 3
+  particle: {fileID: 6666933338644088073, guid: da21353ff78eae442bf49ef13d621a31, type: 3}

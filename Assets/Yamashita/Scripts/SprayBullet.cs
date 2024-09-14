@@ -18,13 +18,13 @@ public class SprayBullet : MonoBehaviour
         IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
-             if (Time.time >= nextDamageTime)
-             {
+            if (Time.time >= nextDamageTime)
+            {
                 Damage damage = new Damage
                 {
                     canDamagePlayer = canDamagePlayer,
                     canDamageEnemy = canDamageEnemy,
-                    damage = damageAmount,
+                    damageValue = damageAmount,
                     direction = knockbackDirection,
                     knockback = knockbackAmount
                 };
@@ -32,7 +32,7 @@ public class SprayBullet : MonoBehaviour
                 damageable.ApplyDamage(damage);
 
                 nextDamageTime = Time.time + damageInterval;
-             }
+            }
         }
     }
 }
