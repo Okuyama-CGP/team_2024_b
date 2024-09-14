@@ -5,9 +5,14 @@ using UnityEngine;
 public class MainGameManager : MonoBehaviour
 {
     /// <summary>
-    /// PlayerCoreスクリプト Playerの状態などを管理している。
+    /// PlayerCore : Playerの状態などを管理している。
     /// </summary>
     [SerializeField]public PlayerCore playerCore;
+
+    /// <summary>
+    /// UImanager : UIの表示、更新を管理している
+    /// </summary>
+    [SerializeField]public UImanager uImanager;
 
     //シングルトンパターン
     public static MainGameManager instance;
@@ -19,10 +24,5 @@ public class MainGameManager : MonoBehaviour
         }else{
             Destroy(gameObject);
         }
-    }
-
-    void Start()
-    {
-        
     }
 }

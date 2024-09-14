@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -149,8 +150,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
         }
     }
     void LevelUp() {
-        Debug.Log("レベルアップ！！ 現在のレベル: " + Level);
-        //TODO:レベルアップ時の処理
+        upgradeManager.LevelUp();
     }
 
     /// <summary>
@@ -166,5 +166,12 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public void IncreaseAttackPower(float amount) {
         AttackPower += amount;
+    }
+
+    /// <summary>
+    /// アイテム吸引距離を増やす
+    /// </summary>
+    public void IncreaseSuckDistance(float amount) {
+        suckDistance += amount;
     }
 }
