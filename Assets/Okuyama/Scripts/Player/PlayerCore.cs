@@ -149,8 +149,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
         }
     }
     void LevelUp() {
-        Debug.Log("レベルアップ！！ 現在のレベル: " + Level);
-        //TODO:レベルアップ時の処理
+        upgradeManager.LevelUp();
     }
 
     /// <summary>

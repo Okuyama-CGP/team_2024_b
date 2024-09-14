@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: UpgradeOnhitTest
   m_EditorClassIdentifier: 
   upgradeName: "\u8FFD\u6483(\u4EEE)"
-  description: "\u653B\u6483Hit\u6642\u306B\u3001\u8FFD\u52A0\u52B9\u679C\u3092\u4E0E\u3048\u305F\u6C17\u5206\u306B\u306A\u308B\u3002\n\u5B9F\u88C5\u30C6\u30B9\u30C8\u306A\u306E\u3067\u3001\u30D1\u30FC\u30C6\u30A3\u30AF\u30EB\u30A8\u30D5\u30A7\u30AF\u30C8\u3092\u767A\u751F\u3055\u305B\u308B\u3060\u3051\u3002"
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  description: "\u653B\u6483Hit\u6642\u306B\u8FFD\u52A0\u52B9\u679C\u3002\n\u5B9F\u88C5\u30C6\u30B9\u30C8\u3002\n\u73FE\u5728\u306F\u547D\u4E2D\u6642\u306B\u30D1\u30FC\u30C6\u30A3\u30AF\u30EB\u767A\u751F\u306E\u307F\u3002"
+  icon: {fileID: 21300000, guid: ad26248df9e83bf4dad3ad58185794bd, type: 3}
   maxStack: 3
   appearanceRate: 1
   particle: {fileID: 6666933338644088073, guid: da21353ff78eae442bf49ef13d621a31, type: 3}

@@ -9,10 +9,14 @@ public abstract class BaseUpgrade : ScriptableObject {
     public string description = "Upgradeの説明テキストテキストテキストテキスト";
     public Sprite icon;
     public int maxStack = 99;
-    [Tooltip("アプグレ出現率の重み。ノーマル(HP増加など)で1.0。レアなほど小さく。")]
+    [Tooltip("upgradeの出現頻度。ノーマル(HP増加など)で1.0。レアなほど小さく。")]
     public float appearanceRate = 1.0f;
 
-    public int stackCount { get; set; } = 1;
+    public int stackCount { get; set; } = 0;
+    /// <summary>
+    /// まだ獲得可能であるか(スタック数が上限に達していないか)
+    /// </summary>
+    public bool isObtainable { get { return stackCount < maxStack; } }
 
     /// <summary>
     /// アップグレードが追加されたときの処理
