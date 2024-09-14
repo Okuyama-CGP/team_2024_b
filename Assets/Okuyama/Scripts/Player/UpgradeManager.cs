@@ -51,7 +51,7 @@ public class UpgradeManager : MonoBehaviour {
     }
 
     void Update() {
-        Debug.Log(allUpgrades[1].upgradeName + " : " + allUpgrades[1].stackCount);
+        //Debug.Log(allUpgrades[1].upgradeName + " : " + allUpgrades[1].stackCount);
     }
 
     /// <summary>
