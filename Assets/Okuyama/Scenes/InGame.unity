@@ -331,6 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allUpgrades:
   - {fileID: 11400000, guid: f38f0ad0e0d461b4fad823132d8b2a8d, type: 2}
+  - {fileID: 11400000, guid: 437c6b057bb160240bfa7e3c2ef2caae, type: 2}
   - {fileID: 11400000, guid: 21424014e54321a4f998cfc554e2cdcf, type: 2}
   maxStackedUpgrades: 
 --- !u!1 &440931284
