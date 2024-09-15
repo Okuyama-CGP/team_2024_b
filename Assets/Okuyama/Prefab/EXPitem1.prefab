@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSuckable: 1
+  pickUpSE: {fileID: 8300000, guid: 1eef4bc3879e51840883f17e58324a36, type: 3}
   expAmount: 1
 --- !u!135 &5480043922088825218
 SphereCollider:
