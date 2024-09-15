@@ -6,28 +6,32 @@ using UnityEngine;
 /// フィールドに落ちているアイテムの基底クラス
 /// Colliderを付けてtriggerにしておくこと。
 /// </summary>
-public abstract class BaseItem : MonoBehaviour
-{
+public abstract class BaseItem : MonoBehaviour {
     [SerializeField] protected bool isSuckable = false; //吸引されるか
     static float suckSpeed = 5.0f; //吸引速度
 
-    protected PlayerCore playerCore{get{return MainGameManager.instance.playerCore;}}
+    [SerializeField] AudioClip pickUpSE; //拾われた時のSE
 
-    void Update()
-    {
+    protected PlayerCore playerCore { get { return MainGameManager.instance.playerCore; } }
+
+    void Update() {
         //吸引される処理
-        if (isSuckable){
+        if (isSuckable) {
             Vector3 direction = playerCore.position - transform.position;
-            if (direction.magnitude <= playerCore.suckDistance){
+            if (direction.magnitude <= playerCore.suckDistance) {
                 transform.position += direction.normalized * Time.deltaTime * suckSpeed;
             }
         }
     }
 
     //拾われた処理。Playerで衝突判定して呼び出される
-    public void PickUp(){
+    public void PickUp() {
+        //サウンド
+        if (pickUpSE != null) {
+            MainGameManager.instance.PlayOneShot(pickUpSE);
+        }
         OnPickedUp();
-        Destroy(gameObject);    //TODO:消滅演出など
+        Destroy(gameObject);
     }
 
     /// <summary>

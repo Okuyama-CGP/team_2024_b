@@ -20,6 +20,6 @@ public class Racket2 : BaseWeapon
         Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
 
         //サウンド
-        usePlayer.audioSourceOneShot.PlayOneShot(swingSE);
+        MainGameManager.instance.PlayOneShot(swingSE);
     }
 }

@@ -14,6 +14,23 @@ public class MainGameManager : MonoBehaviour
     /// </summary>
     [SerializeField]public UImanager uImanager;
 
+    /// <summary>
+    /// グローバル空間に置かれるカーソル
+    /// </summary>
+    [SerializeField]public CursolObject cursolObject;
+
+    /// <summary>
+    /// OneShot再生用のAudioSource
+    /// </summary>
+    [SerializeField] AudioSource audioSourceOneShot;
+    /// <summary>
+    /// SEのOneShot再生
+    /// 可聴範囲無しの2D音声。
+    /// </summary>
+    public void PlayOneShot(AudioClip clip){
+        audioSourceOneShot.PlayOneShot(clip);
+    }
+
     //シングルトンパターン
     public static MainGameManager instance;
     private void Awake()

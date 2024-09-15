@@ -81,7 +81,7 @@ public class UpgradeManager : MonoBehaviour {
         OnUpgradesChanged?.Invoke(upgradesList);
     }
 
-    public void LevelUp() {
+    public void SelectUpgrade() {
         //ランダムにアップグレードを選出
         List<BaseUpgrade> upgrades = GetRandomUpgrade(3);
         //UI表示

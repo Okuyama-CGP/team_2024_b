@@ -9,8 +9,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerCore : MonoBehaviour, IDamageable {
     
-    [SerializeField] CursolObject cursolObject;
-    [SerializeField] public AudioSource audioSourceOneShot;
+    [SerializeField] AudioClip LevelUpSE;
 
     /// <summary>
     /// プレイヤーのモデルオブジェクト inspectorで設定
@@ -46,7 +45,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// <summary>
     /// カーソルのワールド座標
     /// </summary>
-    public Vector3 cursolPosition { get { return cursolObject.cursolPosition; } }
+    public Vector3 cursolPosition { get { return MainGameManager.instance.cursolObject.cursolPosition; } }
     /// <summary>
     /// カーソルのプレイヤーからの相対位置(方向)
     /// </summary>
@@ -151,7 +150,8 @@ public class PlayerCore : MonoBehaviour, IDamageable {
         }
     }
     void LevelUp() {
-        upgradeManager.LevelUp();
+        MainGameManager.instance.PlayOneShot(LevelUpSE);
+        upgradeManager.SelectUpgrade();
     }
 
     /// <summary>
