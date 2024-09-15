@@ -5,6 +5,7 @@ using UnityEngine;
 public class Racket2 : BaseWeapon
 {
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] AudioClip swingSE;
     
     float range = 2.0f; //どれくらい遠くに出現させるか
 
@@ -17,5 +18,8 @@ public class Racket2 : BaseWeapon
 
         Vector3 spawnPos = playerModelTF.position + cursolDirection * range;
         Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+
+        //サウンド
+        MainGameManager.instance.PlayOneShot(swingSE);
     }
 }

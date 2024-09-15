@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05bdc8f255bac544ad95f1aa511f550, type: 3}
+  m_Name: UpgradeAttackPower
+  m_EditorClassIdentifier: 
+  upgradeName: "\u7B4B\u529B\u5897\u5F37"
+  description: "\u529B\u3053\u305D\u30D1\u30EF\u30FC\n\u653B\u6483\u529B\u30921(+0.5/stack)\u5897\u52A0\u3055\u305B\u308B\u3002"
+  icon: {fileID: 21300000, guid: 002d3af5685632e46a2d65bafdde5304, type: 3}
+  maxStack: 99
+  appearanceRate: 1
+  attackPowerBonus: 1
+  attackPowerBonusPerStack: 0.5

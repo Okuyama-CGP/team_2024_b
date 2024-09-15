@@ -41,7 +41,7 @@ public class RacketBullet : MonoBehaviour
             //ダメージを与える
             if(damageable.ApplyDamage(damage)){
                 //成功ならOnHitEventを呼び出す
-                MainGameManager.instance.playerCore.OnHitEvent?.Invoke(damageable, damage);
+                MainGameManager.instance.playerCore.OnHitEvent?.Invoke(other.gameObject, damage);
             }
         }
     }

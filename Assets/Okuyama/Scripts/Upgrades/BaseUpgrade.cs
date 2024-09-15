@@ -1,9 +1,27 @@
 
-public abstract class BaseUpgrade
-{
-    public int stackCount { get; set; } = 1;
+using System;
+using UnityEngine;
 
-    public int maxStack { get; protected set; } = 10;
+public abstract class BaseUpgrade : ScriptableObject {
+    
+    [Header("---------- BaseUpgradeInfo ----------")]
+    public string upgradeName = "NoName";
+    [TextArea(3, 10)]
+    public string description = "Upgradeの説明テキストテキストテキストテキスト";
+    public Sprite icon;
+    public int maxStack = 99;
+    [Tooltip("upgradeの出現頻度。ノーマル(HP増加など)で1.0。レアなほど小さく。")]
+    public float appearanceRate = 1.0f;
+
+    /// <summary>
+    /// 取得してスタックされた数
+    /// </summary>
+    [NonSerialized] public int stackCount = 0;
+
+    /// <summary>
+    /// まだ獲得可能であるか(スタック数が上限に達していないか)
+    /// </summary>
+    public bool isObtainable { get { return stackCount < maxStack; } }
 
     /// <summary>
     /// アップグレードが追加されたときの処理
