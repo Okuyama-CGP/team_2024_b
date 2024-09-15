@@ -10,6 +10,7 @@ using UnityEngine;
 public class PlayerCore : MonoBehaviour, IDamageable {
     
     [SerializeField] CursolObject cursolObject;
+    [SerializeField] public AudioSource audioSourceOneShot;
 
     /// <summary>
     /// プレイヤーのモデルオブジェクト inspectorで設定
