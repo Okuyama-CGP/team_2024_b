@@ -8,5 +8,6 @@ public class NewBehaviourScript : MonoBehaviour
     public void Scenemg()
     {
         SceneManager.LoadScene("InGame");
+        Time.timeScale = 1.0f;
     }
 }
