@@ -23,7 +23,7 @@ public class RacketBullet : MonoBehaviour
     private void Start() {
         startTime = Time.time;
         //プレイヤーの攻撃力を反映して、この攻撃のダメージ値を設定
-        damage.damageValue = MainGameManager.instance.playerCore.AttackPower * DamageRatio;
+        damage.damageValue = MainGameManager.instance.playerCore.attackPower * DamageRatio;
     }
 
     void Update()

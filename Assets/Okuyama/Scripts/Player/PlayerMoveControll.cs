@@ -29,11 +29,18 @@ public class PlayerMoveController : MonoBehaviour
         rb.velocity = inputRaw * speed; //移動
         playerCore.isMoving = inputRaw.magnitude > 0;   //coreに記録
 
-        //モデルの向き変更
+        //移動中
         if(inputRaw.magnitude > 0){
+
+            //向き
             Quaternion targetRotation = Quaternion.Slerp(playerCore.model.transform.rotation, Quaternion.LookRotation(inputRaw), Time.deltaTime * 10.0f);
             playerCore.model.transform.rotation = targetRotation;
             
+            //アニメーション制御
+            playerCore.animator.SetBool("isMoving", true);
+        }else{
+            //アニメーション制御
+            playerCore.animator.SetBool("isMoving", false);
         }
 
     }

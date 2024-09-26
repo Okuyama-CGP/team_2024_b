@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy1 : BaseEnemy
 {
     [SerializeField] float speed = 1.0f;
+    [SerializeField] GameObject Model;
 
     Rigidbody rb;
 
@@ -17,8 +18,13 @@ public class Enemy1 : BaseEnemy
     protected override void Update()
     {
         base.Update();
+
+        //プレイヤーに向かって移動
         Vector3 direction = (playerCore.position - transform.position).normalized;
         rb.velocity = direction * speed;
+
+        //向き
+        Model.transform.LookAt(playerCore.position);
     }
 
     //接触ダメージ

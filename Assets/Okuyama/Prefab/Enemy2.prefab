@@ -157,6 +157,7 @@ MonoBehaviour:
   dropItem: {fileID: 7747549702550959381, guid: 155b60a46d23d354a8c2dac93acd3573, type: 3}
   hpTMP: {fileID: 5458495135602260740}
   speed: 3
+  Model: {fileID: 4311576543265682244}
 --- !u!54 &2220022132012762238
 Rigidbody:
   m_ObjectHideFlags: 0
