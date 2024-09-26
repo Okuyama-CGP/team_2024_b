@@ -17,7 +17,7 @@ public class hpbar : MonoBehaviour
     void Update()
     {
 
-       _image.fillAmount = playerCore.HP / playerCore.MaxHP;
+       _image.fillAmount = playerCore.hp / playerCore.maxHP;
     }
     //画像を長方形に変えたい
     //背景に枠を追加する
