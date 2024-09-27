@@ -20,10 +20,15 @@ public class RacketBullet : MonoBehaviour
         knockback = 0.0f
     };
 
+    PlayerCore playerCore;
+
     private void Start() {
         startTime = Time.time;
         //プレイヤーの攻撃力を反映して、この攻撃のダメージ値を設定
         damage.damageValue = MainGameManager.instance.playerCore.attackPower * DamageRatio;
+        playerCore = MainGameManager.instance.playerCore;
+        ChangeBulletRange();
+        Debug.Log(playerCore.attackRange);
     }
 
     void Update()
@@ -44,5 +49,9 @@ public class RacketBullet : MonoBehaviour
                 MainGameManager.instance.playerCore.OnHitEvent?.Invoke(other.gameObject, damage);
             }
         }
+    }
+
+    private void ChangeBulletRange(){
+        transform.localScale *= playerCore.attackRange;
     }
 }
