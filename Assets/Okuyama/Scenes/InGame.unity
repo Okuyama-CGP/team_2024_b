@@ -385,7 +385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c84985a29eb3741bf00e71411641d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!136 &200610460
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -470,7 +469,7 @@ MonoBehaviour:
   upgradeManager: {fileID: 200610466}
   animator: {fileID: 1153804486}
   isMoving: 0
-  attackTrigger: 0
+  isAttacking: 0
 --- !u!114 &200610464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,6 +517,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 21424014e54321a4f998cfc554e2cdcf, type: 2}
   - {fileID: 11400000, guid: 78c90853ea80373479c62d8a6a2c6348, type: 2}
   - {fileID: 11400000, guid: 16068dfa9d892ee488117642de068551, type: 2}
+  - {fileID: 11400000, guid: 42437f3632927684f9e046e83d540d6e, type: 2}
   dummyUpgrade: {fileID: 11400000, guid: 3cbcb48bf18a75747b504fe9bdd47cb4, type: 2}
 --- !u!1 &264200363
 GameObject:
