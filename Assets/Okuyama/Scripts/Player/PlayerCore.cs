@@ -37,16 +37,30 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public Animator animator;
 
+    //-----------------------------------------------------------
+
     /// <summary>
-    /// プレイヤーが移動中(移動入力がある)かどうか
+    /// プレイヤーが移動中(移動入力がある)かどうか 
     /// </summary>
     public bool isMoving;
 
     /// <summary>
-    /// プレイヤーが攻撃した通知
-    /// 攻撃開始フレームのみtrue
+    /// 攻撃中かどうか
+    /// (!isAttacking)で攻撃可能かを取得
     /// </summary>
-    public bool attackTrigger;
+    public bool isAttacking = false;
+
+    /// <summary>
+    /// 攻撃開始イベント
+    /// </summary>
+    public event Action OnAttackStart;
+
+    /// <summary>
+    /// 攻撃クールダウン終了イベント
+    /// </summary>
+    public event Action OnAttackEnded;
+
+    //-----------------------------------------------------------
 
     /// <summary>
     /// カーソルのワールド座標
@@ -60,6 +74,8 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// カーソルのプレイヤーからの距離
     /// </summary>
     public Vector3 cursolDirection { get { return cursolVector.normalized; } }
+
+    //-----------------------------------------------------------
 
     /// <summary>
     /// 最大HP
@@ -119,7 +135,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// <summary>
     /// 基本移動速度
     /// </summary>
-    public float baseMoveSpeed { get; private set; } = 1.0f;
+    public float baseMoveSpeed { get; private set; } = 4.0f;
 
     /// <summary>
     /// 移動速度ペナルティ
@@ -134,7 +150,6 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     public float moveSpeed { 
         get { return Mathf.Max(0.3f,baseMoveSpeed * (1-moveSpeedPenalty)); } 
     }
-    //TODO: 移動速度の実装
 
 
 
@@ -181,6 +196,41 @@ public class PlayerCore : MonoBehaviour, IDamageable {
         //TODO:死亡時(ゲームオーバー)処理
         Debug.Log("プレイヤー死亡！！");
     }
+
+
+    /// <summary>
+    /// 攻撃可能か確かめ、可能なら攻撃クールダウン開始。
+    /// if(TryAttack(5f,0.5f)){攻撃処理}のように使う
+    /// </summary>
+    public bool TryAttack(float cooldownDuration, float moveSpeedPenalty) {
+        if (!isAttacking) //攻撃中でないなら
+        {
+            StartCoroutine(AttackCooldownCoroutine(cooldownDuration, moveSpeedPenalty));
+            return true; //攻撃成功
+        }else{
+            return false; //他の攻撃実行中→失敗
+        }
+    }
+
+    // コルーチンでクールダウンを処理
+    private IEnumerator AttackCooldownCoroutine(float cooldownDuration, float moveSpeedPenalty)
+    {
+        //攻撃開始
+        isAttacking = true;
+        this.moveSpeedPenalty += moveSpeedPenalty;
+        OnAttackStart?.Invoke();
+
+        // クールダウンが終わるまで待つ
+        yield return new WaitForSeconds(cooldownDuration);
+
+        // クールダウン終了
+        isAttacking = false;
+        this.moveSpeedPenalty -= moveSpeedPenalty;
+        OnAttackEnded?.Invoke();
+    }
+
+
+
 
     /// <summary>
     /// 経験値を加算する

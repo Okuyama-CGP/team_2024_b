@@ -7,16 +7,16 @@ public class Racket2 : BaseWeapon
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] AudioClip swingSE;
     
-    float range = 2.0f; //どれくらい遠くに出現させるか
+    static float distance = 2.0f; //どれくらい遠くに出現させるか
 
     public override void UseWeapon(PlayerCore usePlayer)
     {
-        Transform playerModelTF = usePlayer.model.transform;
-
         Vector3 cursolDirection = usePlayer.cursolDirection;
         cursolDirection.Normalize();
 
-        Vector3 spawnPos = playerModelTF.position + cursolDirection * range;
+        //Bullet生成
+        Vector3 spawnPos = usePlayer.position + cursolDirection * distance;
+        spawnPos.y = 1f;
         Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
 
         //サウンド

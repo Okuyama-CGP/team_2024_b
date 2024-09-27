@@ -2,32 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponUser : MonoBehaviour
-{
+public class WeaponUser : MonoBehaviour {
     [SerializeField] GameObject weaponHolder;
     [SerializeField] GameObject weaponPrefab; //TODO:暫定措置
 
     PlayerCore playerCore;
     GameObject weaponInstance;
-    IUseable holdingUseable;
+    BaseWeapon holdingWeapon;
 
+    protected float lastUseTime = 0.0f;
 
-    void Start()
-    {
+    void Start() {
         playerCore = MainGameManager.instance.playerCore;
 
         weaponInstance = Instantiate(weaponPrefab, weaponHolder.transform);
-        holdingUseable = weaponInstance.GetComponent<IUseable>();
+        holdingWeapon = weaponInstance.GetComponent<BaseWeapon>();
+
+        //イベントサブスクライブ
+        playerCore.OnAttackEnded += OnPlayerAttackEnded;
     }
 
-    
-    void Update()
-    {
-        playerCore.attackTrigger = false;
-        if(Input.GetMouseButtonDown(0)){
-            bool isUsed = holdingUseable.TryUse(playerCore);
-            playerCore.attackTrigger = isUsed;
+
+    void Update() {
+        //マウスクリック
+        if (Input.GetMouseButtonDown(0)) {
+            Attack();
         }
-        //TODO: 長押し使用どうしよう
+    }
+
+    //プレイヤーが攻撃処理終了したタイミング
+    void OnPlayerAttackEnded() {
+        //マウス長押し中
+        if (Input.GetMouseButton(0)) {
+            Attack();
+        }
+    }
+
+    void Attack() {
+        //攻撃クールダウン確認しつつ攻撃
+        //TODO: 攻撃速度の影響
+        if (playerCore.TryAttack(holdingWeapon.useCoolTime, holdingWeapon.moveSpeedPenalty)) {
+            holdingWeapon.UseWeapon(playerCore);
+        }
     }
 }
