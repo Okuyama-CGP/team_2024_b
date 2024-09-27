@@ -8,10 +8,11 @@ using UnityEngine;
 /// </summary>
 public class PlayerMoveController : MonoBehaviour
 {
-    [SerializeField] float speed = 4.0f;
-
     Rigidbody rb;
     PlayerCore playerCore;
+
+    //playerの移動速度を参照
+    float speed { get { return playerCore.moveSpeed; } } 
 
     // Start is called before the first frame update
     void Start()

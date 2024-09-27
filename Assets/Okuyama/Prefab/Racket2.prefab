@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useCoolTime: 0.5
+  moveSpeedPenalty: 0.5
   bulletPrefab: {fileID: 5073282467425953455, guid: db6301aae4732da49a0066cf99c05c30, type: 3}
   swingSE: {fileID: 8300000, guid: eaa6b1e9081de3142873c4bd91c1f61d, type: 3}
 --- !u!1001 &1061518551099411604

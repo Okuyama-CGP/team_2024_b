@@ -3,29 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseWeapon : MonoBehaviour, IUseable
+public abstract class BaseWeapon : MonoBehaviour
 {
     /// <summary>
-    /// 武器の使用クールタイム
+    /// 武器の使用クールタイム モーションと合わせるのが望ましい
     /// </summary>
-    public float useCoolTime = 1.0f;
+    [SerializeField] public float useCoolTime = 1.0f;
+
+    /// <summary>
+    /// 攻撃中の移動速度ペナルティ
+    /// </summary>
+    [SerializeField] public float moveSpeedPenalty = 0.3f;
 
     /// <summary>
     /// 実際の武器使用処理。overrideしてね
     /// </summary>
     public abstract void UseWeapon(PlayerCore usePlayer);
-
-    protected float lastUseTime = 0.0f;
-
-    public bool TryUse(PlayerCore usePlayer){
-        if(Time.time >= lastUseTime + useCoolTime){
-            UseWeapon(usePlayer);
-            lastUseTime = Time.time;
-            return true;
-        }else{
-            return false;
-        }
-    }
-
     
 }
