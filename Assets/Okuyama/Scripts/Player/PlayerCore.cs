@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 /// <summary>
 /// Playerの現在の状態とかを管理する。
-/// Observerパターンにしたかったけど統一性を考慮して妥協
+/// Observerパターンにしたかったけど妥協
 /// </summary>
 public class PlayerCore : MonoBehaviour, IDamageable {
     
@@ -30,6 +31,11 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// プレイヤーのupgradeManagerクラス
     /// </summary>
     public UpgradeManager upgradeManager;
+
+    /// <summary>
+    /// プレイヤーのAnimator
+    /// </summary>
+    public Animator animator;
 
     /// <summary>
     /// プレイヤーが移動中(移動入力がある)かどうか
@@ -58,37 +64,78 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// <summary>
     /// 最大HP
     /// </summary>
-    public float MaxHP { get; private set; } = 100;
+    public float maxHP { get; private set; } = 100;
 
     /// <summary>
     /// 現在のHP
     /// </summary>
-    public float HP { get; private set; }
+    public float hp { get; private set; }
 
     /// <summary>
     /// 現在のレベル
     /// </summary>
-    public int Level { get; private set; } = 1;
+    public int level { get; private set; } = 1;
 
     /// <summary>
     /// 現在の経験値
     /// </summary>
-    public float EXP { get; private set; }
+    public float exp { get; private set; }
 
     /// <summary>
     /// 次のレベルアップに必要な経験値
     /// </summary>
-    public float NextLevelEXP { get; private set; } = 10;
+    public float nextLevelEXP { get; private set; } = 10;
+
+    /// <summary>
+    /// 経験値獲得倍率
+    /// </summary>
+    public float expBoost { get; private set; } = 1;
+    //TODO: 経験値獲得倍率の実装
 
     /// <summary>
     /// 攻撃力
     /// </summary>
-    public float AttackPower { get; private set; } = 1;
+    public float attackPower { get; private set; } = 1;
+
+    /// <summary>
+    /// 攻撃範囲
+    /// デフォルト1、倍率
+    /// </summary>
+    public float attackRange { get; private set; } = 1.0f;
+    //TODO: 攻撃範囲の実装
 
     /// <summary>
     /// アイテム吸引距離
     /// </summary>
     public float suckDistance { get; private set; } = 2.0f;
+
+    /// <summary>
+    /// 防御力(ダメージカット率)
+    /// 0~1の範囲。0.1なら10%のダメージカット
+    /// </summary>
+    public float defencePower { get; private set; } = 0;
+    //TODO: 防御力の実装
+
+    /// <summary>
+    /// 基本移動速度
+    /// </summary>
+    public float baseMoveSpeed { get; private set; } = 1.0f;
+
+    /// <summary>
+    /// 移動速度ペナルティ
+    /// 武器などで減速したときに使う
+    /// </summary>
+    public float moveSpeedPenalty { get; private set; } = 0;
+
+    /// <summary>
+    /// 実際の移動速度 移動処理などにはこれを使う
+    /// どれだけペナルティが掛かっても、最低0.3は保証
+    /// </summary>
+    public float moveSpeed { 
+        get { return Mathf.Max(0.3f,baseMoveSpeed * (1-moveSpeedPenalty)); } 
+    }
+    //TODO: 移動速度の実装
+
 
 
     public delegate void OnHitDelegate(GameObject target, Damage damage);  //イベントの型定義
@@ -100,11 +147,9 @@ public class PlayerCore : MonoBehaviour, IDamageable {
 
     void Start() {
         upgradeManager = GetComponent<UpgradeManager>();
-        HP = MaxHP;
-        EXP = 0;
+        hp = maxHP;
+        exp = 0;
     }
-
-
 
     void Update() {
 
@@ -123,8 +168,8 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public bool ApplyDamage(Damage damage) {
         if (damage.canDamagePlayer) {
-            HP -= damage.damageValue; //TODO HP更新をイベント化
-            if (HP <= 0) {
+            hp -= damage.damageValue; //TODO HP更新をイベント化
+            if (hp <= 0) {
                 Die();
             }
             return true;
@@ -141,10 +186,10 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// 経験値を加算する
     /// </summary>
     public void AddEXP(float expAmount) {
-        EXP += expAmount;
-        if (EXP >= NextLevelEXP) {
-            EXP -= NextLevelEXP;
-            Level++;
+        exp += expAmount;
+        if (exp >= nextLevelEXP) {
+            exp -= nextLevelEXP;
+            level++;
             //TODO 必要経験値のカーブ考えよう
             LevelUp();
         }
@@ -158,15 +203,29 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// 最大HPを増やす
     /// </summary>
     public void IncreaseMaxHP(float amount) {
-        MaxHP += amount;
-        HP += amount;
+        maxHP += amount;
+        hp += amount;
+    }
+
+    /// <summary>
+    /// 経験値獲得倍率を増やす
+    /// </summary>
+    public void IncreaseEXPBoost(float amount) {
+        expBoost += amount;
     }
 
     /// <summary>
     /// 攻撃力を増やす
     /// </summary>
     public void IncreaseAttackPower(float amount) {
-        AttackPower += amount;
+        attackPower += amount;
+    }
+
+    /// <summary>
+    /// 攻撃範囲を増やす
+    /// </summary>
+    public void IncreaseAttackRange(float amount) {
+        attackRange += amount;
     }
 
     /// <summary>
@@ -174,5 +233,20 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public void IncreaseSuckDistance(float amount) {
         suckDistance += amount;
+    }
+
+    /// <summary>
+    /// 防御力を増やす 0~1の範囲にクランプ
+    /// </summary>
+    public void IncreaseDefencePower(float amount) {
+        defencePower += amount;
+        if(defencePower > 1) defencePower = 1;
+    }
+
+    /// <summary>
+    /// 移動速度を増やす
+    /// </summary>
+    public void IncreaseMoveSpeed(float amount) {
+        baseMoveSpeed += amount;
     }
 }

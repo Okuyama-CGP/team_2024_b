@@ -29,10 +29,10 @@ public class UImanager : MonoBehaviour
     void Update()
     {
         //HP表示(仮)
-        hpText.text = "HP: " + (int)playerCore.HP + " / " + playerCore.MaxHP;
+        hpText.text = "HP: " + (int)playerCore.hp + " / " + playerCore.maxHP;
 
         //EXP表示(仮)
-        expText.text = "Level: " + playerCore.Level + "  EXP: " + (int)playerCore.EXP;
+        expText.text = "Level: " + playerCore.level + "  EXP: " + (int)playerCore.exp;
     }
 
 

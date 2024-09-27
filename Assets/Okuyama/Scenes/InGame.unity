@@ -468,6 +468,7 @@ MonoBehaviour:
   LevelUpSE: {fileID: 8300000, guid: 476fcedaa8b83c246a8e3561f76caedd, type: 3}
   model: {fileID: 1153804484}
   upgradeManager: {fileID: 200610466}
+  animator: {fileID: 1153804486}
   isMoving: 0
   attackTrigger: 0
 --- !u!114 &200610464
@@ -498,7 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: Player
   fontSize: 6
-  height: 3
+  height: 5
 --- !u!114 &200610466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2738,7 +2739,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f563d48ed41b2da4092e5f3cb6ace29b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.511
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2827,6 +2828,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7862989844486652593, guid: fee52598af3dd1049a992eacfc95611b, type: 3}
   m_PrefabInstance: {fileID: 1581301777}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1121936599
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3931911829889258519, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.4199367
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931911829889258519, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931911829889258519, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.8255777
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931911829889258519, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931911829889258519, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931911829889258519, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931911829889258519, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931911829889258519, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931911829889258519, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931911829889258519, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207927656823357301, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      propertyPath: m_Name
+      value: Enemy1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4593397552788443687, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
 --- !u!1001 &1133257723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4123,7 +4184,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962209449}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4934,3 +4995,4 @@ SceneRoots:
   - {fileID: 1001174054}
   - {fileID: 440931288}
   - {fileID: 754263757}
+  - {fileID: 1121936599}
