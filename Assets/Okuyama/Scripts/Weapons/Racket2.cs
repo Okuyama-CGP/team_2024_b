@@ -17,7 +17,10 @@ public class Racket2 : BaseWeapon
         //Bullet生成
         Vector3 spawnPos = usePlayer.position + cursolDirection * distance;
         spawnPos.y = 1f;
-        Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+
+        GameObject bulletInstance = Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+        RacketBullet racketBullet = bulletInstance.GetComponent<RacketBullet>();
+        racketBullet.Initialize(usePlayer, cursolDirection);
 
         //サウンド
         MainGameManager.instance.PlayOneShot(swingSE);
