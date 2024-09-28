@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponUser : MonoBehaviour {
@@ -9,6 +10,8 @@ public class WeaponUser : MonoBehaviour {
     PlayerCore playerCore;
     GameObject weaponInstance;
     BaseWeapon holdingWeapon;
+
+    float coolTime { get { return playerCore.attackSpeedReciprocal * holdingWeapon.useCoolTime; } }
 
     protected float lastUseTime = 0.0f;
 
@@ -40,8 +43,7 @@ public class WeaponUser : MonoBehaviour {
 
     void Attack() {
         //攻撃クールダウン確認しつつ攻撃
-        //TODO: 攻撃速度の影響
-        if (playerCore.TryAttack(holdingWeapon.useDuration, holdingWeapon.useCoolTime, holdingWeapon.moveSpeedPenalty)) {
+        if (playerCore.TryAttack(holdingWeapon.useDuration, coolTime, holdingWeapon.moveSpeedPenalty)) {
             holdingWeapon.UseWeapon(playerCore);
         }
     }

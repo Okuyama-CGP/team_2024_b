@@ -111,12 +111,22 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// 経験値獲得倍率
     /// </summary>
     public float expBoost { get; private set; } = 1;
-    //TODO: 経験値獲得倍率の実装
 
     /// <summary>
     /// 攻撃力
     /// </summary>
     public float attackPower { get; private set; } = 1;
+
+    /// <summary>
+    /// 攻撃速度
+    /// 現状、攻撃クールダウンを短縮。攻撃自体の速さは変わらない
+    /// </summary>
+    public float attackSpeed { get; private set; } = 1;
+
+    /// <summary>
+    /// 攻撃速度の逆数。クールダウンの計算などに使おう
+    /// </summary>
+    public float attackSpeedReciprocal { get { return 1 / attackSpeed; } }
 
     /// <summary>
     /// 攻撃範囲
@@ -135,7 +145,6 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// 0~1の範囲。0.1なら10%のダメージカット
     /// </summary>
     public float defencePower { get; private set; } = 0;
-    //TODO: 防御力の実装
 
     /// <summary>
     /// 基本移動速度
@@ -188,7 +197,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public bool ApplyDamage(Damage damage) {
         if (damage.canDamagePlayer) {
-            hp -= damage.damageValue * (1 - defencePower); //TODO HP更新をイベント化
+            hp -= damage.damageValue * (1 - defencePower);
             if (hp <= 0) {
                 Die();
             }
@@ -277,6 +286,13 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public void IncreaseAttackPower(float amount) {
         attackPower += amount;
+    }
+
+    /// <summary>
+    /// 攻撃速度を増やす
+    /// </summary>
+    public void IncreaseAttackSpeed(float amount) {
+        attackSpeed += amount;
     }
 
     /// <summary>

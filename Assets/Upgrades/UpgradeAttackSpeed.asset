@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8d01d77ab4c374e9bf7090c474705a, type: 3}
-  m_Name: UpgradeBulletRange
+  m_Script: {fileID: 11500000, guid: dbe105f878936784a9fb54b924942b12, type: 3}
+  m_Name: UpgradeAttackSpeed
   m_EditorClassIdentifier: 
-  upgradeName: "\u653B\u6483\u7BC4\u56F2\u62E1\u5927"
-  description: "\u653B\u6483\u7BC4\u56F2\u3092\xD71.5(\xD71.25/stack)\u62E1\u5927\u3059\u308B"
+  upgradeName: "\u653B\u6483\u901F\u5EA6\u4E0A\u6607"
+  description: "\u653B\u6483\u901F\u5EA6\u309215%\u4E0A\u6607"
   icon: {fileID: 0}
   maxStack: 99
   appearanceRate: 1
-  bulletRangeBonus: 0.5
-  bulletRangeBonusPerStack: 0.25
+  AttackSpeedBonus: 0.15
+  AttackSpeedBonusPerStack: 0.15

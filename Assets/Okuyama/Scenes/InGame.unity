@@ -521,6 +521,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f39345d0d883db64eb5ae912ffea4904, type: 2}
   - {fileID: 11400000, guid: d7a55f699982cca498ca7f06b8ef56d3, type: 2}
   - {fileID: 11400000, guid: 42437f3632927684f9e046e83d540d6e, type: 2}
+  - {fileID: 11400000, guid: d041cc02e047b6b4990de916e19ede02, type: 2}
   dummyUpgrade: {fileID: 11400000, guid: 3cbcb48bf18a75747b504fe9bdd47cb4, type: 2}
 --- !u!1 &264200363
 GameObject:
@@ -2695,7 +2696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveObjects:
   - waveObject: {fileID: 1701908170}
-    endTimeSec: 30
+    endTimeSec: 120
   - waveObject: {fileID: 26804843}
     endTimeSec: 500
 --- !u!4 &1089425789

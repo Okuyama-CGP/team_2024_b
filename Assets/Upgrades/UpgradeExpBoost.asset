@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UpgradeExpBoost
   m_EditorClassIdentifier: 
   upgradeName: "\u7372\u5F97\u7D4C\u9A13\u5024\u500D\u7387\u4E0A\u6607"
-  description: "\u7372\u5F97\u7D4C\u9A13\u5024\u500D\u7387\u3092+1(+0.5/stack)\u5897\u3084\u3059"
+  description: "\u7372\u5F97\u7D4C\u9A13\u5024\u500D\u7387\u309220%(+10%)\u5897\u52A0"
   icon: {fileID: 0}
   maxStack: 99
   appearanceRate: 1
