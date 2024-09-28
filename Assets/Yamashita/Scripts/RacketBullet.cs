@@ -27,8 +27,6 @@ public class RacketBullet : MonoBehaviour {
         transform.localScale *= playerCore.attackRange;
         transform.rotation = Quaternion.LookRotation(direction,Vector3.up);
 
-        Debug.Log(direction);
-
         //ダメージ設定
         damage = new Damage {
             canDamagePlayer = false,

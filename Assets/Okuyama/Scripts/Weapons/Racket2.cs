@@ -22,6 +22,9 @@ public class Racket2 : BaseWeapon
         RacketBullet racketBullet = bulletInstance.GetComponent<RacketBullet>();
         racketBullet.Initialize(usePlayer, cursolDirection);
 
+        //プレイヤーモデル向き固定
+        usePlayer.moveController.FocusRotation(cursolDirection,useDuration);
+
         //アニメーション
         usePlayer.animator.SetTrigger("swingRacket");
 

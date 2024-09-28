@@ -466,6 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelUpSE: {fileID: 8300000, guid: 476fcedaa8b83c246a8e3561f76caedd, type: 3}
   model: {fileID: 1153804484}
+  moveController: {fileID: 200610459}
   upgradeManager: {fileID: 200610466}
   animator: {fileID: 1153804486}
   isMoving: 0

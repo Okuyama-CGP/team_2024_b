@@ -28,6 +28,11 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     public Vector3 position { get { return transform.position; } }
 
     /// <summary>
+    /// プレイヤーの移動処理クラス
+    /// </summary>
+    public PlayerMoveController moveController;
+
+    /// <summary>
     /// プレイヤーのupgradeManagerクラス
     /// </summary>
     public UpgradeManager upgradeManager;
