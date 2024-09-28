@@ -69,7 +69,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// <summary>
     /// カーソルのプレイヤーからの相対位置(方向)
     /// </summary>
-    public Vector3 cursolVector { get { return cursolPosition - model.transform.position; } }
+    public Vector3 cursolVector { get { return cursolPosition - transform.position; } }
     /// <summary>
     /// カーソルのプレイヤーからの距離
     /// </summary>
