@@ -518,6 +518,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 21424014e54321a4f998cfc554e2cdcf, type: 2}
   - {fileID: 11400000, guid: 78c90853ea80373479c62d8a6a2c6348, type: 2}
   - {fileID: 11400000, guid: 16068dfa9d892ee488117642de068551, type: 2}
+  - {fileID: 11400000, guid: f39345d0d883db64eb5ae912ffea4904, type: 2}
+  - {fileID: 11400000, guid: d7a55f699982cca498ca7f06b8ef56d3, type: 2}
   - {fileID: 11400000, guid: 42437f3632927684f9e046e83d540d6e, type: 2}
   dummyUpgrade: {fileID: 11400000, guid: 3cbcb48bf18a75747b504fe9bdd47cb4, type: 2}
 --- !u!1 &264200363

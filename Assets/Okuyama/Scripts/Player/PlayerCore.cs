@@ -188,7 +188,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public bool ApplyDamage(Damage damage) {
         if (damage.canDamagePlayer) {
-            hp -= damage.damageValue; //TODO HP更新をイベント化
+            hp -= damage.damageValue * (1 - defencePower); //TODO HP更新をイベント化
             if (hp <= 0) {
                 Die();
             }
@@ -244,7 +244,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// 経験値を加算する
     /// </summary>
     public void AddEXP(float expAmount) {
-        exp += expAmount;
+        exp += expAmount * expBoost;
         if (exp >= nextLevelEXP) {
             exp -= nextLevelEXP;
             level++;
