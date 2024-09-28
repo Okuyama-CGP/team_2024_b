@@ -6,6 +6,11 @@ using UnityEngine;
 public abstract class BaseWeapon : MonoBehaviour
 {
     /// <summary>
+    /// 武器の使用にかかる時間 = 移動速度ペナルティの時間
+    /// </summary>
+    [SerializeField] public float useDuration = 0.5f;
+
+    /// <summary>
     /// 武器の使用クールタイム モーションと合わせるのが望ましい
     /// </summary>
     [SerializeField] public float useCoolTime = 1.0f;

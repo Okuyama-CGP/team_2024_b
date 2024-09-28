@@ -14,7 +14,12 @@ public class PlayerMoveController : MonoBehaviour
     //playerの移動速度を参照
     float speed { get { return playerCore.moveSpeed; } } 
 
-    // Start is called before the first frame update
+    //モデル向き固定中(攻撃中など)かどうか
+    public bool isFocused { get; private set; } = false;
+    //モデル向き固定時の向き
+    Quaternion focusRotation;
+
+
     void Start()
     {
         playerCore = MainGameManager.instance.playerCore;
@@ -30,19 +35,39 @@ public class PlayerMoveController : MonoBehaviour
         rb.velocity = inputRaw * speed; //移動
         playerCore.isMoving = inputRaw.magnitude > 0;   //coreに記録
 
-        //移動中
-        if(inputRaw.magnitude > 0){
-
-            //向き
-            Quaternion targetRotation = Quaternion.Slerp(playerCore.model.transform.rotation, Quaternion.LookRotation(inputRaw), Time.deltaTime * 10.0f);
-            playerCore.model.transform.rotation = targetRotation;
-            
-            //アニメーション制御
-            playerCore.animator.SetBool("isMoving", true);
+        //モデル向き制御
+        if(isFocused){
+            //向き固定中
+            Quaternion rotation = Quaternion.Slerp(playerCore.model.transform.rotation, focusRotation, Time.deltaTime * 10.0f);
+            playerCore.model.transform.rotation = rotation;
         }else{
-            //アニメーション制御
-            playerCore.animator.SetBool("isMoving", false);
+            //向き固定中でない
+            if(playerCore.isMoving){ //移動中はその向きに
+                Quaternion rotation = Quaternion.Slerp(playerCore.model.transform.rotation, Quaternion.LookRotation(inputRaw), Time.deltaTime * 10.0f);
+                playerCore.model.transform.rotation = rotation;
+            }
         }
 
+        //アニメーション制御
+        if(playerCore.isMoving){
+            playerCore.animator.SetBool("isMoving", true);
+        }else{
+            playerCore.animator.SetBool("isMoving", false);
+        }
+    }
+
+    /// <summary>
+    /// モデル向きを、一時的に特定の方向に固定する
+    /// </summary>
+    public void FocusRotation(Vector3 direction,float durationSec){
+        StartCoroutine(FocusRotationCoroutine(direction, durationSec));
+    }
+    IEnumerator FocusRotationCoroutine(Vector3 direction, float durationSec){
+        isFocused = true;
+        focusRotation = Quaternion.LookRotation(direction);
+
+        yield return new WaitForSeconds(durationSec);
+
+        isFocused = false;
     }
 }
