@@ -202,10 +202,10 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// 攻撃可能か確かめ、可能なら攻撃クールダウン開始。
     /// if(TryAttack(5f,0.5f)){攻撃処理}のように使う
     /// </summary>
-    public bool TryAttack(float cooldownDuration, float moveSpeedPenalty) {
+    public bool TryAttack(float attackDuration, float cooldownDuration, float moveSpeedPenalty) {
         if (!isAttacking) //攻撃中でないなら
         {
-            StartCoroutine(AttackCooldownCoroutine(cooldownDuration, moveSpeedPenalty));
+            StartCoroutine(AttackCooldownCoroutine(attackDuration, cooldownDuration, moveSpeedPenalty));
             return true; //攻撃成功
         }else{
             return false; //他の攻撃実行中→失敗
@@ -213,19 +213,22 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     }
 
     // コルーチンでクールダウンを処理
-    private IEnumerator AttackCooldownCoroutine(float cooldownDuration, float moveSpeedPenalty)
+    private IEnumerator AttackCooldownCoroutine(float attackDuration,float cooldownDuration, float moveSpeedPenalty)
     {
         //攻撃開始
         isAttacking = true;
         this.moveSpeedPenalty += moveSpeedPenalty;
         OnAttackStart?.Invoke();
 
-        // クールダウンが終わるまで待つ
+        // 攻撃が終わるまで待つ
+        yield return new WaitForSeconds(attackDuration);
+
+        this.moveSpeedPenalty -= moveSpeedPenalty;
+
+        //クールダウンが終わるまで待つ
         yield return new WaitForSeconds(cooldownDuration);
 
-        // クールダウン終了
         isAttacking = false;
-        this.moveSpeedPenalty -= moveSpeedPenalty;
         OnAttackEnded?.Invoke();
     }
 

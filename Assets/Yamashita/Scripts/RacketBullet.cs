@@ -25,7 +25,7 @@ public class RacketBullet : MonoBehaviour {
 
         //オブジェクトサイズ、向き
         transform.localScale *= playerCore.attackRange;
-        transform.rotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.LookRotation(direction,Vector3.up);
 
         Debug.Log(direction);
 

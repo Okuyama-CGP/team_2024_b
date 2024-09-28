@@ -41,7 +41,7 @@ public class WeaponUser : MonoBehaviour {
     void Attack() {
         //攻撃クールダウン確認しつつ攻撃
         //TODO: 攻撃速度の影響
-        if (playerCore.TryAttack(holdingWeapon.useCoolTime, holdingWeapon.moveSpeedPenalty)) {
+        if (playerCore.TryAttack(holdingWeapon.useDuration, holdingWeapon.useCoolTime, holdingWeapon.moveSpeedPenalty)) {
             holdingWeapon.UseWeapon(playerCore);
         }
     }
