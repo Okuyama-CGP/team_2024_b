@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public abstract class BaseItem : MonoBehaviour {
     [SerializeField] protected bool isSuckable = false; //吸引されるか
-    static float suckSpeed = 5.0f; //吸引速度
+    static float suckSpeed = 10.0f; //吸引速度
 
     [SerializeField] AudioClip pickUpSE; //拾われた時のSE
 

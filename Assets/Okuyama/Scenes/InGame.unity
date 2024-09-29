@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnInterval: 0.5
-  enemyPrefab: {fileID: 8207927656823357301, guid: 7d43781a552a0664786897d811f6cdde, type: 3}
+  enemyPrefab: {fileID: 8207927656823357301, guid: abbc452abfca4024aaf043b716341608, type: 3}
 --- !u!1001 &136424100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2303,6 +2303,8 @@ MonoBehaviour:
   uImanager: {fileID: 2071988248}
   grobalSoundManager: {fileID: 1089425792}
   cursolObject: {fileID: 1001174055}
+  GameAreaSize: {x: 100, y: 100}
+  GameAreaCenter: {x: 0, y: 0}
 --- !u!82 &1089425791
 AudioSource:
   m_ObjectHideFlags: 0
