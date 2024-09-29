@@ -14,9 +14,13 @@ public class UImanager : MonoBehaviour
     /// </summary>
     [SerializeField] LevelUpUI levelUpUI;
 
+    /// <summary>
+    /// ゲームオーバー時のUI
+    /// </summary>
+    [SerializeField] GameOverUI gameOverUI;
+
     PlayerCore playerCore;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerCore = MainGameManager.instance.playerCore;
@@ -25,7 +29,6 @@ public class UImanager : MonoBehaviour
         playerCore.upgradeManager.OnUpgradesChanged += UpdateUpgradesText;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //HP表示(仮)
@@ -36,6 +39,17 @@ public class UImanager : MonoBehaviour
     }
 
 
+    //ゲーム実行中---------------
+    /// <summary>
+    /// 取得中のupgradeを表示 TODO:アプグレアイコンのせる
+    /// </summary>
+    public void UpdateUpgradesText(List<BaseUpgrade> upgrades){
+        string text = "";
+        foreach (var upgrade in upgrades){
+            text += upgrade.upgradeName + "   ×" + upgrade.stackCount + "\n";
+        }
+        upgradesText.text = text;
+    }
 
 
     //レベルアップ関係---------------
@@ -58,12 +72,14 @@ public class UImanager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-
-    public void UpdateUpgradesText(List<BaseUpgrade> upgrades){
-        string text = "";
-        foreach (var upgrade in upgrades){
-            text += upgrade.upgradeName + "   ×" + upgrade.stackCount + "\n";
-        }
-        upgradesText.text = text;
+    //ゲームオーバー関係---------------
+    /// <summary>
+    /// ゲームオーバーUIを表示
+    /// ・ 表示内容を初期化、時間停止
+    /// </summary>
+    public void ActivateGameOverUI(){
+        gameOverUI.gameObject.SetActive(true);
+        gameOverUI.InitializePanel();
+        Time.timeScale = 0;
     }
 }

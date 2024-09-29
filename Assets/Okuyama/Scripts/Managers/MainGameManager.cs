@@ -20,16 +20,42 @@ public class MainGameManager : MonoBehaviour
     [SerializeField]public CursolObject cursolObject;
 
     /// <summary>
-    /// OneShot再生用のAudioSource
+    /// どこでも聞こえる音を鳴らすためのAudioSource
     /// </summary>
-    [SerializeField] AudioSource audioSourceOneShot;
+    [SerializeField] AudioSource audioSourceGrobal;
     /// <summary>
     /// SEのOneShot再生
     /// 可聴範囲無しの2D音声。
     /// </summary>
     public void PlayOneShot(AudioClip clip){
-        audioSourceOneShot.PlayOneShot(clip);
+        audioSourceGrobal.PlayOneShot(clip);
     }
+
+
+    /// <summary>
+    /// 生存時間
+    /// </summary>
+    public float survivedTime {get; private set;} = 0;
+
+    void Start()
+    {
+        survivedTime = 0;
+        playerCore.OnDeath += OnGameOver;
+    }
+
+    void Update()
+    {
+        survivedTime += Time.deltaTime;
+    }
+
+    /// <summary>
+    /// ゲームオーバー時の処理
+    /// </summary>
+    void OnGameOver(){
+        audioSourceGrobal.Stop();
+        uImanager.ActivateGameOverUI();
+    }
+
 
     //シングルトンパターン
     public static MainGameManager instance;
@@ -37,7 +63,7 @@ public class MainGameManager : MonoBehaviour
     {
         if (instance == null){
             instance = this;
-            //DontDestroyOnLoad(gameObject); シーン跨ぎ。要検討
+            //DontDestroyOnLoad(gameObject); //シーン跨ぎ、要検討 
         }else{
             Destroy(gameObject);
         }

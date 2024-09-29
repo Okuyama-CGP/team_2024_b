@@ -166,6 +166,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     }
 
 
+    //イベント類---------------------------------------------------
 
     public delegate void OnHitDelegate(GameObject target, Damage damage);  //イベントの型定義
     /// <summary>
@@ -173,6 +174,11 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// 武器などで攻撃した際は、<c>OnHitEvent?.Invoke(target, damage)</c>を呼び出す
     /// </summary>
     public OnHitDelegate OnHitEvent;
+
+    /// <summary>
+    /// プレイヤーが死亡した通知
+    /// </summary>
+    public event Action OnDeath;
 
     void Start() {
         upgradeManager = GetComponent<UpgradeManager>();
@@ -207,8 +213,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
         }
     }
     void Die() {
-        //TODO:死亡時(ゲームオーバー)処理
-        Debug.Log("プレイヤー死亡！！");
+        OnDeath?.Invoke();
     }
 
 
