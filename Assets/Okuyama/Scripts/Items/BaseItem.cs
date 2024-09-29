@@ -26,11 +26,13 @@ public abstract class BaseItem : MonoBehaviour {
 
     //拾われた処理。Playerで衝突判定して呼び出される
     public void PickUp() {
-        //サウンド
-        if (pickUpSE != null) {
-            MainGameManager.instance.grobalSoundManager.PlayOneShot(pickUpSE);
+        if (MainGameManager.instance.isPlaying) {
+            //サウンド
+            if (pickUpSE != null) {
+                MainGameManager.instance.grobalSoundManager.PlayOneShot(pickUpSE);
+            }
+            OnPickedUp();
         }
-        OnPickedUp();
         Destroy(gameObject);
     }
 

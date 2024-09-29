@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee49e83b5053bdc4cb80052fa05fc98e, type: 3}
   m_Name: UpgradeExpBoost
   m_EditorClassIdentifier: 
-  upgradeName: "\u7372\u5F97\u7D4C\u9A13\u5024\u500D\u7387\u4E0A\u6607"
-  description: "\u7372\u5F97\u7D4C\u9A13\u5024\u500D\u7387\u309220%(+10%)\u5897\u52A0"
-  icon: {fileID: 0}
+  upgradeName: "\u306F\u3063\u3074"
+  description: "\u7372\u5F97\u7D4C\u9A13\u5024\u3092 20%(+10%)\u5897\u52A0\u3059\u308B\u3002\n\u308F\u3063\u3057\u3087\u3044\u308F\u3063\u3057\u3087\u3044"
+  icon: {fileID: 21300000, guid: cf198acd750430f46826d6bf4a5d424a, type: 3}
   maxStack: 99
   appearanceRate: 1
   ExpBoostBonus: 0.2

@@ -11,6 +11,7 @@ using TMPro;
 public abstract class BaseEnemy : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float maxHP = 5.0f;
+    [SerializeField] protected float knockbackMultiplier = 1.0f; 
 
     /// <summary>
     /// 現在のHP
@@ -22,13 +23,19 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 
     protected PlayerCore playerCore{get{return MainGameManager.instance.playerCore;}}
 
+    protected Rigidbody rb;
+
+    /// <summary>
+    /// ノックバック中かどうか
+    /// </summary>
+    protected bool isKnockbacking = false;
 
     [SerializeField] TextMeshPro hpTMP; //FIXME 仮置き
 
     protected virtual void Start()
     {
+        rb = GetComponent<Rigidbody>();
         currentHP = maxHP;
-
         hpTMP.text = currentHP.ToString(); //仮置き
     }
 
@@ -43,6 +50,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
         //canDamageEnemyなダメージソースからのダメージのみ受ける
         if (damage.canDamageEnemy){
             currentHP -= damage.damageValue;
+            StartCoroutine(KnockbackCoroutine(damage.direction, damage.knockback));
 
             hpTMP.text = currentHP.ToString(); //仮置き
 
@@ -67,6 +75,23 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
         //TODO:死亡演出
 
         Destroy(gameObject);
+    }
+
+
+    //ノックバックコルーチン
+    protected IEnumerator KnockbackCoroutine(Vector3 direction, float amount)
+    {
+        amount = amount * knockbackMultiplier;
+
+        //ノックバック開始
+        isKnockbacking = true;
+        Vector3 velocity = direction * amount * 2f;
+        rb.velocity = velocity;
+
+        yield return new WaitForSeconds(amount * 0.3f);
+
+        //終了
+        isKnockbacking = false;
     }
 
 }

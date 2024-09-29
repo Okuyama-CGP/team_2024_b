@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe105f878936784a9fb54b924942b12, type: 3}
   m_Name: UpgradeAttackSpeed
   m_EditorClassIdentifier: 
-  upgradeName: "\u653B\u6483\u901F\u5EA6\u4E0A\u6607"
-  description: "\u653B\u6483\u901F\u5EA6\u309215%\u4E0A\u6607"
-  icon: {fileID: 0}
+  upgradeName: "\u30E2\u30F3\u30A8\u30CA 500ml\u7F36"
+  description: "\u653B\u6483\u901F\u5EA6\u309215%\u4E0A\u6607\n\u671D\u5915\u98DF\u5F8C\u306B\u9759\u8108\u6CE8\u5C04\u3057\u307E\u3057\u3087\u3046\u306D\uFF5E"
+  icon: {fileID: 21300000, guid: 0c1772203be3feb4db46f91e2d55ade6, type: 3}
   maxStack: 99
   appearanceRate: 1
   AttackSpeedBonus: 0.15

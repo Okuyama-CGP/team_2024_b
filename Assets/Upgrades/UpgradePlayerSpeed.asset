@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b4610f80b3c0c149a4534f2147e3b83, type: 3}
   m_Name: UpgradePlayerSpeed
   m_EditorClassIdentifier: 
-  upgradeName: "\u79FB\u52D5\u901F\u5EA6\u4E0A\u6607"
-  description: "\u79FB\u52D5\u901F\u5EA6\u3092+1(+0.5/stack)\u4E0A\u6607\u3055\u305B\u308B"
-  icon: {fileID: 0}
+  upgradeName: "\u308F\u305F\u304C\u3057"
+  description: "\u79FB\u52D5\u901F\u5EA6\u309220%\u4E0A\u6607\u3002\n\u3060\u304C\u3057\u304B\u3057\u3001\u308F\u305F\u3057\u304C\u308F\u305F\u304C\u3057\u3002"
+  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   maxStack: 99
   appearanceRate: 1
-  playerSpeedBonus: 1
-  playerSpeedBonusPerStack: 0.5
+  playerSpeedBonus: 0.2
+  playerSpeedBonusPerStack: 0.2

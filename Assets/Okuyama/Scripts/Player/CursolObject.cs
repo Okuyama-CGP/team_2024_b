@@ -28,7 +28,5 @@ public class CursolObject : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         float distance = (y - ray.origin.y) / ray.direction.y; //指定Y平面までの距離
         transform.position =  ray.origin + ray.direction * distance;
-        
-        //TODO 通常のマウスカーソル消してもいいかもね
     }
 }
