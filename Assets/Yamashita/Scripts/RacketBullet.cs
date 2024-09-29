@@ -6,7 +6,7 @@ public class RacketBullet : MonoBehaviour {
     [SerializeField] MeshRenderer meshRenderer;
 
     //ダメージ反映率、プレイヤー攻撃力に掛ける
-    const float DamageRatio = 5.0f;
+    const float DamageRatio = 1.0f;
 
     //遅延時間いろいろ
     const float lifeTime = 0.2f;

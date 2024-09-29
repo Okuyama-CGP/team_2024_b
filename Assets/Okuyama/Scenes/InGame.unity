@@ -448,6 +448,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d7a55f699982cca498ca7f06b8ef56d3, type: 2}
   - {fileID: 11400000, guid: 42437f3632927684f9e046e83d540d6e, type: 2}
   - {fileID: 11400000, guid: d041cc02e047b6b4990de916e19ede02, type: 2}
+  - {fileID: 11400000, guid: 65d8d5e1a0c814e49b6608763b48aeeb, type: 2}
   dummyUpgrade: {fileID: 11400000, guid: 3cbcb48bf18a75747b504fe9bdd47cb4, type: 2}
 --- !u!1 &360640874
 GameObject:
@@ -2148,7 +2149,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f563d48ed41b2da4092e5f3cb6ace29b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 869bc32a0c9d07848ad7d4be1b6aad46, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1

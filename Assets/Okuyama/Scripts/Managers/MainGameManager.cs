@@ -84,13 +84,13 @@ public class MainGameManager : MonoBehaviour {
     }
     // ゲームオーバー演出
     public IEnumerator GameOverCoroutine() {
-        Time.timeScale = 0.2f; //スローモーション化
+        Time.timeScale = 0.4f; //スローモーション化
         playerCore.cameraController.CameraShake(0.2f, 0.1f); //カメラ振動
         //TODO エフェクト
         grobalSoundManager.StopMainBGM(); //BGM停止
         grobalSoundManager.PlayDeathSE(); //死亡SE再生
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSecondsRealtime(1f);
 
         Time.timeScale = 1f; //スローモーション解除
         playerCore.moveController.StopRB(); //プレイヤーの押し出し停止

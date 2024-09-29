@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05bdc8f255bac544ad95f1aa511f550, type: 3}
   m_Name: UpgradeAttackPower
   m_EditorClassIdentifier: 
-  upgradeName: "\u7B4B\u529B\u5897\u5F37"
-  description: "\u529B\u3053\u305D\u30D1\u30EF\u30FC\n\u653B\u6483\u529B\u30921(+0.5/stack)\u5897\u52A0\u3055\u305B\u308B\u3002"
-  icon: {fileID: 21300000, guid: 002d3af5685632e46a2d65bafdde5304, type: 3}
+  upgradeName: "\u30CF\u30C1\u30DE\u30AD"
+  description: "\u653B\u6483\u529B\u3092 5\u5897\u52A0\u3059\u308B\n\u6280\u304C\u56FA\u5B9A\u3055\u308C\u308B\u3001\u306A\u3093\u3066\u3053\u3068\u306F\u7279\u306B\u306A\u3044\u3002"
+  icon: {fileID: 21300000, guid: bea5b5ac597b47249b6b7d941a4921bb, type: 3}
   maxStack: 99
   appearanceRate: 1
-  attackPowerBonus: 1
-  attackPowerBonusPerStack: 0.5
+  attackPowerBonus: 5
+  attackPowerBonusPerStack: 5

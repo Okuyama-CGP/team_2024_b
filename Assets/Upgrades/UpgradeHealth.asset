@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fd883479614234a95657283d976f57, type: 3}
   m_Name: UpgradeHealth
   m_EditorClassIdentifier: 
-  upgradeName: "\u5F37\u976D\u306A\u8089\u4F53"
-  description: "\u868A\u306B\u602F\u307E\u306C\u8089\u4F53\u3092\u624B\u306B\u5165\u308C\u308B\u3002\nMaxHP\u309210(+5/stack)\u5897\u52A0\u3055\u305B\u308B\u3002"
+  upgradeName: "\u6700\u5927\u4F53\u529B\u5897\u52A0(\u4EEE\u540D"
+  description: "MaxHP\u309210(+5/stack)\u5897\u52A0\u3055\u305B\u308B\u3002"
   icon: {fileID: 21300000, guid: be4142af159766c44bd4f9799cf03a2b, type: 3}
   maxStack: 99
   appearanceRate: 1
