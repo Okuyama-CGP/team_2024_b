@@ -19,7 +19,7 @@ public class PlayerMoveController : MonoBehaviour {
     Quaternion focusRotation;
 
     // ゲームオーバー時のカメラ向き固定フラグ
-    public bool gameoverFocus = false;
+    bool gameoverFocus = false;
 
 
     void Start() {
@@ -68,7 +68,7 @@ public class PlayerMoveController : MonoBehaviour {
     void UpdateOnGameOver() {
         if(gameoverFocus) {
             //ゆっくりカメラ目線
-            Quaternion targetRot = Quaternion.Euler(0, 180, 0);
+            Quaternion targetRot = Quaternion.Euler(0, -230, 0);
             playerCore.model.transform.rotation = Quaternion.Slerp(playerCore.model.transform.rotation, targetRot, Time.deltaTime * 5f);
         }
     }
@@ -93,5 +93,12 @@ public class PlayerMoveController : MonoBehaviour {
     /// </summary>
     public void StopRB() {
         rb.isKinematic = true;
+    }
+
+    /// <summary>
+    /// ゲームオーバーカメラ目線を開始
+    /// </summary>
+    public void StartGameoverFocus() {
+        gameoverFocus = true;
     }
 }

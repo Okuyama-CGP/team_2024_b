@@ -38,6 +38,11 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public Animator animator;
 
+    /// <summary>
+    /// プレイヤーのカメラコントローラー
+    /// </summary>
+    [SerializeField] public CameraController cameraController;
+
     //-----------------------------------------------------------
 
     /// <summary>

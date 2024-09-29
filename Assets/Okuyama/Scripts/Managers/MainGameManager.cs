@@ -85,7 +85,7 @@ public class MainGameManager : MonoBehaviour {
     // ゲームオーバー演出
     public IEnumerator GameOverCoroutine() {
         Time.timeScale = 0.2f; //スローモーション化
-        //カメラ振動
+        playerCore.cameraController.CameraShake(0.2f, 0.1f); //カメラ振動
         //TODO エフェクト
         grobalSoundManager.StopMainBGM(); //BGM停止
         grobalSoundManager.PlayDeathSE(); //死亡SE再生
@@ -95,11 +95,11 @@ public class MainGameManager : MonoBehaviour {
         Time.timeScale = 1f; //スローモーション解除
         playerCore.moveController.StopRB(); //プレイヤーの押し出し停止
         playerCore.animator.SetTrigger("death"); //アニメーション
-        playerCore.moveController.gameoverFocus = true;
-        //カメラズーム
+        playerCore.moveController.StartGameoverFocus(); //カメラ目線
+        playerCore.cameraController.StartGameoverFocus(); //ズーム
         grobalSoundManager.PlayGameOverSE(); //ゲームオーバーSE再生
-        
-        yield return new WaitForSeconds(4f);
+
+        yield return new WaitForSeconds(3f);
 
         uImanager.ActivateGameOverUI(); //ゲームオーバーUI表示
     }
