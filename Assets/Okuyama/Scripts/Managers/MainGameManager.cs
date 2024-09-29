@@ -29,6 +29,12 @@ public class MainGameManager : MonoBehaviour {
     [SerializeField] public CursolObject cursolObject;
 
     /// <summary>
+    /// ゲームエリアのサイズ
+    /// </summary>
+    [SerializeField] private Vector2 GameAreaSize = new Vector2(100, 100);
+    [SerializeField] private Vector2 GameAreaCenter = Vector2.zero;
+
+    /// <summary>
     /// ゲームの状態(InGame内のみ)
     /// </summary>
     public GameState gameState { get; private set; } = GameState.Playing;
@@ -86,7 +92,6 @@ public class MainGameManager : MonoBehaviour {
     public IEnumerator GameOverCoroutine() {
         Time.timeScale = 0.4f; //スローモーション化
         playerCore.cameraController.CameraShake(0.2f, 0.1f); //カメラ振動
-        //TODO エフェクト
         grobalSoundManager.StopMainBGM(); //BGM停止
         grobalSoundManager.PlayDeathSE(); //死亡SE再生
 
@@ -102,6 +107,14 @@ public class MainGameManager : MonoBehaviour {
         yield return new WaitForSeconds(3f);
 
         uImanager.ActivateGameOverUI(); //ゲームオーバーUI表示
+    }
+
+
+    /// <summary>
+    /// ゲームエリア内かどうかを判定
+    /// </summary>
+    public bool IsInGameArea(Vector3 pos) {
+        return Mathf.Abs(pos.x - GameAreaCenter.x) < GameAreaSize.x / 2 && Mathf.Abs(pos.z - GameAreaCenter.y) < GameAreaSize.y / 2;
     }
 
 
