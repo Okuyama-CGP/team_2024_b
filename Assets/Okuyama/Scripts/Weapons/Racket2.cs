@@ -29,7 +29,7 @@ public class Racket2 : BaseWeapon
         usePlayer.animator.SetTrigger("swingRacket");
 
         //サウンド
-        MainGameManager.instance.PlayOneShot(swingSE);
+        MainGameManager.instance.grobalSoundManager.PlayOneShot(swingSE);
 
     }
 }

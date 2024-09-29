@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 /// <summary>
@@ -9,8 +7,6 @@ using UnityEngine;
 /// Observerパターンにしたかったけど妥協
 /// </summary>
 public class PlayerCore : MonoBehaviour, IDamageable {
-    
-    [SerializeField] AudioClip LevelUpSE;
 
     /// <summary>
     /// プレイヤーのモデルオブジェクト inspectorで設定
@@ -175,11 +171,6 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public OnHitDelegate OnHitEvent;
 
-    /// <summary>
-    /// プレイヤーが死亡した通知
-    /// </summary>
-    public event Action OnDeath;
-
     void Start() {
         upgradeManager = GetComponent<UpgradeManager>();
         hp = maxHP;
@@ -202,6 +193,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// ダメージを受ける処理
     /// </summary>
     public bool ApplyDamage(Damage damage) {
+        if(!MainGameManager.instance.isPlaying) return false; //ゲーム中でないならダメージを受けない
         if (damage.canDamagePlayer) {
             hp -= damage.damageValue * (1 - defencePower);
             if (hp <= 0) {
@@ -213,7 +205,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
         }
     }
     void Die() {
-        OnDeath?.Invoke();
+        MainGameManager.instance.GameOver();
     }
 
 
@@ -267,7 +259,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
         }
     }
     void LevelUp() {
-        MainGameManager.instance.PlayOneShot(LevelUpSE);
+        MainGameManager.instance.grobalSoundManager.PlayLevelUpSE();
         upgradeManager.SelectUpgrade();
     }
 

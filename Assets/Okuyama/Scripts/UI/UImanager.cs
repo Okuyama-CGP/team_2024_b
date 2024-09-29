@@ -80,6 +80,5 @@ public class UImanager : MonoBehaviour
     public void ActivateGameOverUI(){
         gameOverUI.gameObject.SetActive(true);
         gameOverUI.InitializePanel();
-        Time.timeScale = 0;
     }
 }

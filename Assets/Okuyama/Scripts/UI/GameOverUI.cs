@@ -7,15 +7,12 @@ public class GameOverUI : MonoBehaviour
 {
     [SerializeField] TMPro.TextMeshProUGUI survivedTimeText; //生存時間
 
-    [SerializeField] AudioClip deathSE;
-
     /// <summary>
     /// 表示内容を初期化
     /// </summary>
     public void InitializePanel()
     {
         survivedTimeText.text = "生存時間 : " + MainGameManager.instance.survivedTime.ToString("F2") + " s";
-        MainGameManager.instance.PlayOneShot(deathSE);
     }
 
 
@@ -24,7 +21,6 @@ public class GameOverUI : MonoBehaviour
     /// </summary>
     public void ButtonRestartGame()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
