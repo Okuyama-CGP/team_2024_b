@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb360f245b0840b43b08a951f1afbdc4, type: 3}
-  m_Name: UpgradeDefencePower
+  m_Script: {fileID: 11500000, guid: 9f8d01d77ab4c374e9bf7090c474705a, type: 3}
+  m_Name: UpgradeBulletRange
   m_EditorClassIdentifier: 
-  upgradeName: "\u9632\u5FA1\u529B\u4E0A\u6607"
-  description: "\u9632\u5FA1\u529B\u309230%(10%/stack)\u5897\u3084\u3059"
+  upgradeName: "\u653B\u6483\u7BC4\u56F2\u62E1\u5927"
+  description: "\u653B\u6483\u7BC4\u56F2\u309250%(25%)\u5897\u52A0"
   icon: {fileID: 0}
   maxStack: 99
   appearanceRate: 1
-  defencePowerBonus: 0.2
-  defencePowerBonusPerStack: 0.1
+  bulletRangeBonus: 0.5
+  bulletRangeBonusPerStack: 0.25
