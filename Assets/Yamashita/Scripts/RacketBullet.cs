@@ -1,21 +1,21 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RacketBullet : MonoBehaviour {
     [SerializeField] SphereCollider sphereCollider;
     [SerializeField] MeshRenderer meshRenderer;
+    [SerializeField] AudioClip hitSE;
 
     //ダメージ反映率、プレイヤー攻撃力に掛ける
     const float DamageRatio = 1.0f;
 
-    //遅延時間いろいろ
-    const float lifeTime = 0.2f;
-
-
     // ダメージソースのプレイヤー
     PlayerCore playerCore;
-
     Damage damage;
+
+    //既に当たったもの (重複ダメージ防止)
+    List<IDamageable> alreadyHit = new List<IDamageable>();
 
     /// <summary>
     /// 初期化
@@ -44,19 +44,20 @@ public class RacketBullet : MonoBehaviour {
     private IEnumerator BulletStateCoroutine() {
         yield return new WaitForSeconds(0.2f);
         sphereCollider.enabled = true;
-        yield return new WaitForSeconds(0.1f);
-        sphereCollider.enabled = false;
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
     }
 
     // 当たり判定
     private void OnTriggerEnter(Collider other) {
         if (other.TryGetComponent(out IDamageable damageable)) {
+            if (alreadyHit.Contains(damageable)) return; //既に当たっているなら無視
             //ダメージを与える
             if (damageable.ApplyDamage(damage)) {
-                //成功ならOnHitEventを呼び出す
-                playerCore.OnHitEvent?.Invoke(other.gameObject, damage);
+                //成功ならリストに追加
+                alreadyHit.Add(damageable);
+                playerCore.OnHitEvent?.Invoke(other.gameObject, damage); //イベント発火
+                MainGameManager.instance.grobalSoundManager.PlayOneShot(hitSE,0.1f); //ヒット音
             }
         }
     }

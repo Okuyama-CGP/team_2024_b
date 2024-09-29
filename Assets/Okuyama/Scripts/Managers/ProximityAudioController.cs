@@ -6,7 +6,7 @@ public class ProximityAudioController : MonoBehaviour
     [SerializeField] AudioSource audioSource;    // 効果音のAudioSource
     [SerializeField] float maxDistance = 20f;    // 音が完全に消える最大距離
     [SerializeField] LayerMask enemyLayer;       // 敵のレイヤーマスク
-    [SerializeField] float maxVolume = 0.5f;       // 最大音量
+    [SerializeField] float maxVolume = 0.5f;     // 最大音量
 
     void Update()
     {

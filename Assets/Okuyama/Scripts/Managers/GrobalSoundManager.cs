@@ -18,8 +18,8 @@ public class GrobalSoundManager : MonoBehaviour {
     /// SEのOneShot再生
     /// 可聴範囲無しの2D音声。
     /// </summary>
-    public void PlayOneShot(AudioClip clip) {
-        audioSourceGrobal.PlayOneShot(clip);
+    public void PlayOneShot(AudioClip clip, float volume = 1.0f) {
+        audioSourceGrobal.PlayOneShot(clip,volume);
     }
 
     public void PlayDeathSE() {
