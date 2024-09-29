@@ -28,7 +28,7 @@ public abstract class BaseItem : MonoBehaviour {
     public void PickUp() {
         //サウンド
         if (pickUpSE != null) {
-            MainGameManager.instance.PlayOneShot(pickUpSE);
+            MainGameManager.instance.grobalSoundManager.PlayOneShot(pickUpSE);
         }
         OnPickedUp();
         Destroy(gameObject);
