@@ -11,7 +11,7 @@ public class PlayerMoveController : MonoBehaviour {
     PlayerCore playerCore;
 
     //playerの移動速度を参照
-    float speed { get { return playerCore.moveSpeed; } }
+    float speed { get { return playerCore.moveSpeed * 4f; } }
 
     //モデル向き固定中(攻撃中など)かどうか
     public bool isFocused { get; private set; } = false;

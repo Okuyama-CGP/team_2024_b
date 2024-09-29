@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb360f245b0840b43b08a951f1afbdc4, type: 3}
   m_Name: UpgradeDefencePower
   m_EditorClassIdentifier: 
-  upgradeName: "\u9632\u5FA1\u529B\u4E0A\u6607"
-  description: "\u88AB\u30C0\u30E1\u30AB\u30C3\u30C820%(+10%)"
-  icon: {fileID: 0}
+  upgradeName: "\u304A\u9762"
+  description: "\u88AB\u30C0\u30E1\u30FC\u30B8\u309220%(+10%/stack)\u8EFD\u6E1B\u3059\u308B\u3002\n\u30D5\u30EC\u30FC\u30D0\u30FC\u30C6\u30AD\u30B9\u30C8\u52DF\u96C6\u4E2D
+    \u304A\u72D0\u69D8\u306E\u5C0E\u304D\u3092\uFF01"
+  icon: {fileID: 21300000, guid: b27d1cf416f9d27438b790d428f8f6f7, type: 3}
   maxStack: 99
   appearanceRate: 1
   defencePowerBonus: 0.2

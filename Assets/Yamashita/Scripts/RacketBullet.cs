@@ -6,7 +6,7 @@ public class RacketBullet : MonoBehaviour {
     [SerializeField] MeshRenderer meshRenderer;
 
     //ダメージ反映率、プレイヤー攻撃力に掛ける
-    const float DamageRatio = 5.0f;
+    const float DamageRatio = 1.0f;
 
     //遅延時間いろいろ
     const float lifeTime = 0.2f;
@@ -33,7 +33,7 @@ public class RacketBullet : MonoBehaviour {
             canDamageEnemy = true,
             damageValue = playerCore.attackPower * DamageRatio,
             direction = direction,
-            knockback = 0.0f
+            knockback = playerCore.knockbackRatio * 1.0f
         };
     }
     void Start() {
@@ -44,6 +44,8 @@ public class RacketBullet : MonoBehaviour {
     private IEnumerator BulletStateCoroutine() {
         yield return new WaitForSeconds(0.2f);
         sphereCollider.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        sphereCollider.enabled = false;
         yield return new WaitForSeconds(0.4f);
         Destroy(gameObject);
     }

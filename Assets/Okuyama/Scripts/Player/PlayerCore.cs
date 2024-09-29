@@ -116,7 +116,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// <summary>
     /// 攻撃力
     /// </summary>
-    public float attackPower { get; private set; } = 1;
+    public float attackPower { get; private set; } = 10;
 
     /// <summary>
     /// 攻撃速度
@@ -134,7 +134,11 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// デフォルト1、倍率
     /// </summary>
     public float attackRange { get; private set; } = 1.0f;
-    //TODO: 攻撃範囲の実装
+
+    /// <summary>
+    /// ノックバック倍率
+    /// </summary>
+    public float knockbackRatio { get; private set; } = 1.0f;
 
     /// <summary>
     /// アイテム吸引距離
@@ -148,9 +152,14 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     public float defencePower { get; private set; } = 0;
 
     /// <summary>
+    /// HP再生速度 (毎秒)
+    /// </summary>
+    public float regenerationSpeed { get; private set; } = 0.5f;
+
+    /// <summary>
     /// 基本移動速度
     /// </summary>
-    public float baseMoveSpeed { get; private set; } = 4.0f;
+    public float baseMoveSpeed { get; private set; } = 1f;
 
     /// <summary>
     /// 移動速度ペナルティ
@@ -183,7 +192,21 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     }
 
     void Update() {
+        switch (MainGameManager.instance.gameState) {
+            case GameState.Playing:
+                UpdateOnPlaying();
+                break;
+            case GameState.GameOver:
+                break;
+            default:
+                break;
+        }
+    }
 
+    // ゲーム中の更新処理
+    void UpdateOnPlaying() {
+        // HP自動回復
+        Heal(regenerationSpeed * Time.deltaTime);
     }
 
     //接触系
@@ -200,7 +223,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     public bool ApplyDamage(Damage damage) {
         if(!MainGameManager.instance.isPlaying) return false; //ゲーム中でないならダメージを受けない
         if (damage.canDamagePlayer) {
-            hp -= damage.damageValue * (1 - defencePower);
+            hp -= damage.damageValue * (1 - defencePower); //ダメージ計算
             if (hp <= 0) {
                 Die();
             }
@@ -213,6 +236,15 @@ public class PlayerCore : MonoBehaviour, IDamageable {
         MainGameManager.instance.GameOver();
     }
 
+    /// <summary>
+    /// HPを回復する
+    /// </summary>
+    public void Heal(float amount) {
+        if(hp < maxHP){
+            hp += amount;
+        }
+        if (hp > maxHP) hp = maxHP;
+    }
 
     /// <summary>
     /// 攻撃可能か確かめ、可能なら攻撃クールダウン開始。
@@ -305,6 +337,13 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     }
 
     /// <summary>
+    /// ノックバック倍率を増やす
+    /// </summary>
+    public void IncreaseKnockbackRatio(float amount) {
+        knockbackRatio += amount;
+    }
+
+    /// <summary>
     /// アイテム吸引距離を増やす
     /// </summary>
     public void IncreaseSuckDistance(float amount) {
@@ -317,6 +356,13 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     public void IncreaseDefencePower(float amount) {
         defencePower += amount;
         if(defencePower > 1) defencePower = 1;
+    }
+
+    /// <summary>
+    /// HP再生速度を増やす
+    /// </summary>
+    public void IncreaseRegenerationSpeed(float amount) {
+        regenerationSpeed += amount;
     }
 
     /// <summary>
