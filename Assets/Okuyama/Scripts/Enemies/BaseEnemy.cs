@@ -12,6 +12,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float maxHP = 5.0f;
     [SerializeField] protected float knockbackMultiplier = 1.0f; 
+    [SerializeField] EnemyHPbar enemyHPbar;
 
     /// <summary>
     /// 現在のHP
@@ -30,13 +31,10 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     /// </summary>
     protected bool isKnockbacking = false;
 
-    [SerializeField] TextMeshPro hpTMP; //FIXME 仮置き
-
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
         currentHP = maxHP;
-        hpTMP.text = currentHP.ToString(); //仮置き
     }
 
     protected virtual void Update()
@@ -52,7 +50,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
             currentHP -= damage.damageValue;
             StartCoroutine(KnockbackCoroutine(damage.direction, damage.knockback));
 
-            hpTMP.text = currentHP.ToString(); //仮置き
+            enemyHPbar.ActivateHPbar(currentHP / maxHP);
 
             if (currentHP <= 0){
                 Die();
