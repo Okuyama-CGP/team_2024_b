@@ -33,7 +33,7 @@ public class RacketBullet : MonoBehaviour {
             canDamageEnemy = true,
             damageValue = playerCore.attackPower * DamageRatio,
             direction = direction,
-            knockback = 0.0f
+            knockback = playerCore.knockbackRatio * 1.0f
         };
     }
     void Start() {
@@ -44,6 +44,8 @@ public class RacketBullet : MonoBehaviour {
     private IEnumerator BulletStateCoroutine() {
         yield return new WaitForSeconds(0.2f);
         sphereCollider.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        sphereCollider.enabled = false;
         yield return new WaitForSeconds(0.4f);
         Destroy(gameObject);
     }

@@ -134,7 +134,11 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// デフォルト1、倍率
     /// </summary>
     public float attackRange { get; private set; } = 1.0f;
-    //TODO: 攻撃範囲の実装
+
+    /// <summary>
+    /// ノックバック倍率
+    /// </summary>
+    public float knockbackRatio { get; private set; } = 1.0f;
 
     /// <summary>
     /// アイテム吸引距離
@@ -155,7 +159,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// <summary>
     /// 基本移動速度
     /// </summary>
-    public float baseMoveSpeed { get; private set; } = 4.0f;
+    public float baseMoveSpeed { get; private set; } = 1f;
 
     /// <summary>
     /// 移動速度ペナルティ
@@ -330,6 +334,13 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// </summary>
     public void IncreaseAttackRange(float amount) {
         attackRange += amount;
+    }
+
+    /// <summary>
+    /// ノックバック倍率を増やす
+    /// </summary>
+    public void IncreaseKnockbackRatio(float amount) {
+        knockbackRatio += amount;
     }
 
     /// <summary>

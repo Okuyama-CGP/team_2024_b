@@ -449,6 +449,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 42437f3632927684f9e046e83d540d6e, type: 2}
   - {fileID: 11400000, guid: d041cc02e047b6b4990de916e19ede02, type: 2}
   - {fileID: 11400000, guid: 65d8d5e1a0c814e49b6608763b48aeeb, type: 2}
+  - {fileID: 11400000, guid: 98b8b9774e7d22847ae028e984a31b28, type: 2}
   dummyUpgrade: {fileID: 11400000, guid: 3cbcb48bf18a75747b504fe9bdd47cb4, type: 2}
 --- !u!1 &360640874
 GameObject:
