@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8d01d77ab4c374e9bf7090c474705a, type: 3}
   m_Name: UpgradeBulletRange
   m_EditorClassIdentifier: 
-  upgradeName: "\u653B\u6483\u7BC4\u56F2\u62E1\u5927(\u4EEE\u540D"
-  description: "\u653B\u6483\u7BC4\u56F2\u309250%(25%)\u5897\u52A0\u3059\u308B"
-  icon: {fileID: 0}
+  upgradeName: "\u304A\u3070\u3051"
+  description: "\u30BE\u30AF\u30BE\u30AF\u3059\u308B\u306D\u3047\n\u653B\u6483\u7BC4\u56F2\u309250%(25%)\u5897\u52A0\u3059\u308B\n"
+  icon: {fileID: 21300000, guid: 06981e1ed4888134aae5de459be43cd6, type: 3}
   maxStack: 99
   appearanceRate: 1
   bulletRangeBonus: 0.5
