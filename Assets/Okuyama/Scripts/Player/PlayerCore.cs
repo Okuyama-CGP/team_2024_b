@@ -106,7 +106,7 @@ public class PlayerCore : MonoBehaviour, IDamageable {
     /// <summary>
     /// 次のレベルアップに必要な経験値
     /// </summary>
-    public float nextLevelEXP { get; private set; } = 10;
+    public float nextLevelEXP { get; private set; } = 16;
 
     /// <summary>
     /// 経験値獲得倍率
@@ -287,8 +287,8 @@ public class PlayerCore : MonoBehaviour, IDamageable {
         exp += expAmount * expBoost;
         if (exp >= nextLevelEXP) {
             exp -= nextLevelEXP;
+            nextLevelEXP *= 1.1f; //TODO 経験値カーブ　要調整
             level++;
-            //TODO 必要経験値のカーブ考えよう
             LevelUp();
         }
     }

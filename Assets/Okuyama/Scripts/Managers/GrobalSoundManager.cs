@@ -23,12 +23,11 @@ public class GrobalSoundManager : MonoBehaviour {
     }
 
     public void PlayDeathSE() {
-        Debug.Log("PlayDeathSE");
-        PlayOneShot(deathSE);
+        PlayOneShot(deathSE,0.7f);
     }
 
     public void PlayGameOverSE() {
-        PlayOneShot(gameOverSE);
+        PlayOneShot(gameOverSE,0.7f);
     }
 
     public void PlayLevelUpSE() {

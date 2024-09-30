@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UImanager : MonoBehaviour
 {
+    [SerializeField] Slider expSlider;
+    [SerializeField] Slider hpSlider;
     [SerializeField] TextMeshProUGUI hpText;
-    [SerializeField] TextMeshProUGUI expText;
     [SerializeField] TextMeshProUGUI upgradesText;
 
     /// <summary>
@@ -31,11 +33,12 @@ public class UImanager : MonoBehaviour
 
     void Update()
     {
-        //HP表示(仮)
-        hpText.text = "HP: " + (int)playerCore.hp + " / " + playerCore.maxHP;
+        expSlider.value = playerCore.exp / playerCore.nextLevelEXP;
 
-        //EXP表示(仮)
-        expText.text = "Level: " + playerCore.level + "  EXP: " + (int)playerCore.exp;
+        hpSlider.value = playerCore.hp / playerCore.maxHP;
+        hpText.text = (int)playerCore.hp + " / " + playerCore.maxHP;
+
+        //TODO 滑らかに変化
     }
 
 

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3922532c42b1541ad0685ac3cc5808, type: 3}
   m_Name: UpgradeRegeneration
   m_EditorClassIdentifier: 
-  upgradeName: "\u81EA\u52D5\u56DE\u5FA9\u5897\u52A0(\u4EEE\u540D"
-  description: "\u81EA\u52D5\u56DE\u5FA9\u901F\u5EA6\u3092\u6BCE\u79D20.3\u5897\u52A0"
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  upgradeName: Nintendo Swotch
+  description: "\u4E26\u5927\u62B5\u306E\u3053\u3068\u3067\u306F\u58CA\u308C\u306A\u3044\u3068\u540D\u9AD8\u3044\u30B9\u30A6\u30A9\u30C3\u30C1\u3002\n\u81EA\u52D5\u56DE\u5FA9\u901F\u5EA6\u3092\u6BCE\u79D20.3\u5897\u52A0"
+  icon: {fileID: 21300000, guid: 6d83a50ea4ebbf749a3427c57ae0ef0a, type: 3}
   maxStack: 99
   appearanceRate: 1
   regenerationBunus: 0.3

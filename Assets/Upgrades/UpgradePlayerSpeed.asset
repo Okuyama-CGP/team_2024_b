@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: "\u308F\u305F\u304C\u3057"
   description: "\u79FB\u52D5\u901F\u5EA6\u309220%\u4E0A\u6607\u3002\n\u3060\u304C\u3057\u304B\u3057\u3001\u308F\u305F\u3057\u304C\u308F\u305F\u304C\u3057\u3002"
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: d0da2fd6bcc489a45bb5ece2c4614b39, type: 3}
   maxStack: 99
   appearanceRate: 1
   playerSpeedBonus: 0.2
