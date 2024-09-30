@@ -83,10 +83,10 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 
         //ノックバック開始
         isKnockbacking = true;
-        Vector3 velocity = direction * amount * 2f;
+        Vector3 velocity = direction * amount * 1f;
         rb.velocity = velocity;
 
-        yield return new WaitForSeconds(amount * 0.3f);
+        yield return new WaitForSeconds(amount * 0.2f);
 
         //終了
         isKnockbacking = false;

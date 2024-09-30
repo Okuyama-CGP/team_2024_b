@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9071325495469391584}
   - component: {fileID: 4008440599028682775}
   - component: {fileID: 2970008458415219706}
+  - component: {fileID: 2802957218383161641}
   m_Layer: 5
   m_Name: UpgradeUI
   m_TagString: Untagged
@@ -27,7 +28,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228393561025283509}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -63,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.54509807}
+  m_Color: {r: 0.9817386, g: 0.990566, b: 0.83637416, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -151,6 +152,21 @@ MonoBehaviour:
   upgradeName: {fileID: 4036299034898465156}
   upgradeDescription: {fileID: 3078562881844011210}
   upgradeIcon: {fileID: 7645828564636788542}
+--- !u!114 &2802957218383161641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228393561025283509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 0
 --- !u!1 &5145920749655534546
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,8 +276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -13.310003}
-  m_SizeDelta: {x: -10, y: -36.619995}
+  m_AnchoredPosition: {x: 2.1500092, y: -17.385002}
+  m_SizeDelta: {x: -14.299969, y: -44.769997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &279610696144596131
 CanvasRenderer:
@@ -394,8 +410,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -10, y: -10}
+  m_AnchoredPosition: {x: 13, y: -2.2900069}
+  m_SizeDelta: {x: -10, y: -12.579987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6393701500973837990
 CanvasRenderer:
