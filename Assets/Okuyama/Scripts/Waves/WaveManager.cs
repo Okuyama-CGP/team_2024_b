@@ -10,11 +10,13 @@ public class WaveManager : MonoBehaviour
     public struct WaveObject
     {
         public GameObject waveObject;
-        public float endTimeSec;
+        public float waveDuration;
     }
 
     [SerializeField] List<WaveObject> waveObjects = new List<WaveObject>();   
     //各waveScript,終了時刻
+
+    [SerializeField] float allWaveEndedMultiplier = 2.0f; //全てのwaveが終了した際の敵のステータス倍率
 
     int CurrentWaveIndex = 0; //現在のwaveのインデックス
 
@@ -22,7 +24,6 @@ public class WaveManager : MonoBehaviour
     float CurrentWaveEndTime = 0; //現在のwaveの終了時刻
     BaseWave CurrentWaveScript;
 
-    bool isEnd = false;
 
     void Start()
     {
@@ -31,7 +32,7 @@ public class WaveManager : MonoBehaviour
             Debug.LogError("WaveObjectにBaseWaveを継承したスクリプトがアタッチされていません");
         }else{
             CurrentWaveScript.OnStartWave(); //第一ウェーブ開始処理
-            CurrentWaveEndTime = waveObjects[0].endTimeSec;
+            CurrentWaveEndTime = waveObjects[0].waveDuration;
         }
     }
 
@@ -44,24 +45,19 @@ public class WaveManager : MonoBehaviour
             CurrentWaveScript.OnEndWave(); //現在のウェーブの終了時処理
             CurrentWaveIndex++;
 
-            if (CurrentWaveIndex < waveObjects.Count){
-                CurrentWaveScript = waveObjects[CurrentWaveIndex].waveObject.GetComponent<BaseWave>();
-                CurrentWaveScript.OnStartWave(); //次のウェーブの開始処理
-                CurrentWaveEndTime = waveObjects[CurrentWaveIndex].endTimeSec;
-            }else{
-                CurrentWaveEndTime = float.PositiveInfinity;
-
-                //TODO:全ウェーブ終了時(ゲーム終了時?)の処理
-                Debug.Log("終了！！！aaa");
-                isEnd = true;
-
+            if(CurrentWaveIndex == waveObjects.Count){
+                CurrentWaveIndex = 0;
+                MainGameManager.instance.enemyStatusMultiplier *= allWaveEndedMultiplier;
             }
+            CurrentWaveScript = waveObjects[CurrentWaveIndex].waveObject.GetComponent<BaseWave>();
+            CurrentWaveScript.OnStartWave(); //次のウェーブの開始処理
+            CurrentWaveEndTime += waveObjects[CurrentWaveIndex].waveDuration;
+
         }
         else
         {
-            if (!isEnd){
-                CurrentWaveScript.OnWaveUpdate(); //ウェーブ実行中の処理
-            }
+            
+            CurrentWaveScript.OnWaveUpdate(); //ウェーブ実行中の処理
         }
     }
 }

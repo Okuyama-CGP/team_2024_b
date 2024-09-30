@@ -34,6 +34,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
+        maxHP *= MainGameManager.instance.enemyStatusMultiplier;
+        knockbackMultiplier /= MainGameManager.instance.enemyStatusMultiplier; 
         currentHP = maxHP;
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SimpleInfSpawnWave : BaseWave {
     [SerializeField] float spawnInterval = 1.0f;
-    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] List<GameObject> enemyPrefabs;
 
     float elapsedTime = 0;
     PlayerCore playerCore;
@@ -18,10 +18,9 @@ public class SimpleInfSpawnWave : BaseWave {
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= spawnInterval) //Intervalごとに敵を生成
         {
-            //距離20の円周上にランダムに敵を生成
+            //距離20の円周上にランダム位置
             float dist = 20;
             Vector3 spawnPos;
-
             while (true) {
                 //ゲームエリア外なら振りなおす
                 float deg = UnityEngine.Random.Range(0, Mathf.PI * 2);
@@ -34,6 +33,10 @@ public class SimpleInfSpawnWave : BaseWave {
                 }
             }
 
+            //敵をランダム選択
+            GameObject enemyPrefab = enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Count)];
+
+            //出現
             GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
             elapsedTime -= spawnInterval;
         }

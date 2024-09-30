@@ -54,6 +54,11 @@ public class MainGameManager : MonoBehaviour {
     /// </summary>
     public float survivedTime { get; private set; } = 0;
 
+    /// <summary>
+    /// 敵のステータス倍率
+    /// </summary>
+    public float enemyStatusMultiplier = 1.0f;
+
     void Start() {
         gameState = GameState.Playing;
         survivedTime = 0;
