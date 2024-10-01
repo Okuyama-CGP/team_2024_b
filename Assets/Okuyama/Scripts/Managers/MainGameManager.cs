@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using unityroom.Api;
 
 public enum GameState {
     Playing,
@@ -90,6 +91,7 @@ public class MainGameManager : MonoBehaviour {
     /// </summary>
     public void GameOver() {
         gameState = GameState.GameOver;
+        SendUnityroomSurvivalTime(); //生存時間送信
         GameOverEvent?.Invoke();
         StartCoroutine(GameOverCoroutine());
     }
@@ -116,12 +118,20 @@ public class MainGameManager : MonoBehaviour {
 
 
     /// <summary>
-    /// ゲームエリア内かどうかを判定
+    /// UnityRoomに生存時間を送信する関数
+    /// 参考： https://github.com/naichilab/unityroom-client-library?tab=readme-ov-file
+    /// </summary>
+    public void SendUnityroomSurvivalTime() {
+        UnityroomApiClient.Instance.SendScore(1,survivedTime,ScoreboardWriteMode.HighScoreDesc);
+    }
+
+
+    /// <summary>
+    /// 指定地点がゲームエリア内かどうかを判定する関数
     /// </summary>
     public bool IsInGameArea(Vector3 pos) {
         return Mathf.Abs(pos.x - GameAreaCenter.x) < GameAreaSize.x / 2 && Mathf.Abs(pos.z - GameAreaCenter.y) < GameAreaSize.y / 2;
     }
-
 
     //シングルトンパターン
     public static MainGameManager instance;
