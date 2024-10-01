@@ -10,6 +10,7 @@ public class UImanager : MonoBehaviour
     [SerializeField] Slider hpSlider;
     [SerializeField] TextMeshProUGUI hpText;
     [SerializeField] TextMeshProUGUI upgradesText;
+    [SerializeField] TextMeshProUGUI surviveTimeText;
 
     /// <summary>
     /// レベルアップ時のupgrade選択用UI
@@ -37,6 +38,7 @@ public class UImanager : MonoBehaviour
 
         hpSlider.value = playerCore.hp / playerCore.maxHP;
         hpText.text = (int)playerCore.hp + " / " + playerCore.maxHP;
+        surviveTimeText.text = MainGameManager.instance.survivedTime.ToString("F2") + " s";
 
         //TODO 滑らかに変化
     }
