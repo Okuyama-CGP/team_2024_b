@@ -6253,7 +6253,7 @@ GameObject:
   - component: {fileID: 778154729}
   - component: {fileID: 778154730}
   m_Layer: 0
-  m_Name: Wave5
+  m_Name: Wave6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6286,11 +6286,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e8d50d23c8070419b5135fe6d98050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 0.3
+  spawnInterval: 0.5
   enemyPrefabs:
   - {fileID: 8207927656823357301, guid: 61436966e634c8c459b49d2ece8c9b09, type: 3}
   - {fileID: 8207927656823357301, guid: abbc452abfca4024aaf043b716341608, type: 3}
   - {fileID: 8207927656823357301, guid: a63ee2b61bbf0c44388ff8234a03b041, type: 3}
+  - {fileID: 8207927656823357301, guid: a34a82d27c8aaea4bb8fe4de5c250f8a, type: 3}
 --- !u!1 &783183018
 GameObject:
   m_ObjectHideFlags: 0
@@ -9066,13 +9067,13 @@ MonoBehaviour:
   - waveObject: {fileID: 26804843}
     waveDuration: 60
   - waveObject: {fileID: 783183018}
-    waveDuration: 60
+    waveDuration: 30
   - waveObject: {fileID: 443626864}
     waveDuration: 10
-  - waveObject: {fileID: 778154728}
-    waveDuration: 60
   - waveObject: {fileID: 1458964123}
-    waveDuration: 16
+    waveDuration: 30
+  - waveObject: {fileID: 778154728}
+    waveDuration: 20
   allWaveEndedMultiplier: 2
 --- !u!4 &1089425789
 Transform:
@@ -9091,8 +9092,8 @@ Transform:
   - {fileID: 26804844}
   - {fileID: 783183019}
   - {fileID: 443626865}
-  - {fileID: 778154729}
   - {fileID: 1458964124}
+  - {fileID: 778154729}
   - {fileID: 967033098}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13027,7 +13028,7 @@ GameObject:
   - component: {fileID: 1458964124}
   - component: {fileID: 1458964125}
   m_Layer: 0
-  m_Name: Wave6
+  m_Name: Wave5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13060,7 +13061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e8d50d23c8070419b5135fe6d98050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 5
+  spawnInterval: 2
   enemyPrefabs:
   - {fileID: 8207927656823357301, guid: a34a82d27c8aaea4bb8fe4de5c250f8a, type: 3}
 --- !u!1001 &1494547637
