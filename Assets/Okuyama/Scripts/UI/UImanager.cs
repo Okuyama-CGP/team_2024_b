@@ -9,7 +9,6 @@ public class UImanager : MonoBehaviour
     [SerializeField] Slider expSlider;
     [SerializeField] Slider hpSlider;
     [SerializeField] TextMeshProUGUI hpText;
-    [SerializeField] TextMeshProUGUI upgradesText;
     [SerializeField] TextMeshProUGUI surviveTimeText;
 
     /// <summary>
@@ -28,8 +27,6 @@ public class UImanager : MonoBehaviour
     {
         playerCore = MainGameManager.instance.playerCore;
         levelUpUI.gameObject.SetActive(false);
-
-        playerCore.upgradeManager.OnUpgradesChanged += UpdateUpgradesText;
     }
 
     void Update()
@@ -44,17 +41,6 @@ public class UImanager : MonoBehaviour
     }
 
 
-    //ゲーム実行中---------------
-    /// <summary>
-    /// 取得中のupgradeを表示 TODO:アプグレアイコンのせる
-    /// </summary>
-    public void UpdateUpgradesText(List<BaseUpgrade> upgrades){
-        string text = "";
-        foreach (var upgrade in upgrades){
-            text += upgrade.upgradeName + "   ×" + upgrade.stackCount + "\n";
-        }
-        upgradesText.text = text;
-    }
 
 
     //レベルアップ関係---------------
