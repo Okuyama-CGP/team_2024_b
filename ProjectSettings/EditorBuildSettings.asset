@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Okuyama/Scenes/InGame.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/Yamashita/Scenes/Title.unity
     guid: 292faa3ed9847264f8150bca2fa01145
+  - enabled: 1
+    path: Assets/Okuyama/Scenes/InGame.unity
+    guid: f5301fa1708bcc44395824918a67ba91
   m_configObjects: {}
